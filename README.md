@@ -2,7 +2,7 @@
 Clases de Backend con Django
 
 <br>
-<h3><strong>Proyectos Backend con Django</strong><hr>
+<h3><strong>Proyectos Backend con Django</strong></h3>
 <hr>
 <br>
 <ol>

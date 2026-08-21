@@ -12,6 +12,7 @@ Clases de Backend con Django
     ```
 
 2. **Activación del Ambiente Virtual.**
+    
     El ambiente virtual debe permanecer activo durante todo el tiempo de desarrollo, para mantener aislada la configuración y los cambios efectuados en el ambiente.
     - Mediante el terminal nos ubicamos dentro del directorio creado con la instrucción anterior.
     - Dentro de este directorio, nos movemos al subdirectorio Scripts.

@@ -27,8 +27,9 @@ Clases de Backend con Django
         <li>Dentro de Scripts, ejecutamos el siguiente comando en nuestro terminal:<br>
             <code>.\Activate</code>
         </li>
-        <li>Si obtenemos un error de permisos para ejecutar scripts, le daremos permisos especiales a nuestro terminal mediante la sigueinte instrucción:<br>
-        <code>Set-ExecutionPolicy RemoteSigned -Scope CurrentUser</code></li>
+        <li>Si obtenemos un error de permisos para ejecutar scripts, le daremos permisos especiales a nuestro terminal mediante la siguiente instrucción:<br>
+        <code>Set-ExecutionPolicy RemoteSigned -Scope CurrentUser</code>
+        </li>
         <li>Una vez otorgados los permisos, podemos volver a ejecutar el comando anterior.</li>
     </ul>
     <li></li>

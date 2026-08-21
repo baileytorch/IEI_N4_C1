@@ -2,7 +2,7 @@
 Clases de Backend con Django
 
 <br>
-<h3><strong>Proyectos Backend con Django</strong></h3>
+# Proyectos Backend con Django
 <hr>
 <br>
 <ol>
@@ -12,7 +12,8 @@ Clases de Backend con Django
     </li>
     <ul>
         <li>Teniendo creado el directorio de nuestro proyecto (repositorio clonado), iniciamos un nuevo terminal.</li>
-        <li>Para crear el ambiente virtual, ejecutamos el siguiente comando en nuestro terminal:<br>
+        <li>
+            Para crear el ambiente virtual, ejecutamos el siguiente comando en nuestro terminal:<br>
             <code>python -m venv nombre_ambiente</code>
         </li>
     </ul>

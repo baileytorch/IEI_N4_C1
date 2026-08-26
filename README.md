@@ -41,4 +41,13 @@ Clases de Backend con Django
     ```
     django-admin startproject nombre_django .
     ```
-    
+    - nombre_django debe ser reemplazado por el nombre que Ud. le dará a su motor Django, es común que se use el acrónimo drf (Django Rest framework). Idealmente debe ser un nombre corto, porque deberemos llamarlo en más de alguna oportunidad.
+
+4. **Creación de Aplicación**
+    - Cuando ya tenemos un motor Django funcional, podemos crear nuestra aplicación particular que contendrá los controladores, las vistas y los modelos.
+    - Para crear nuestra aplicación, nos ubicamos mediante el terminal en la carpeta raíz del proyecto y ejecutamos el siguiente comando:
+    ```
+    django-admin startapp nombre_aplicacion
+    ```
+    - nombre_aplicacion debe ser reemplazado por el nombre que Ud. le dará a su aplicación, el que debe ser descriptivo para seguir normativas de buenas prácticas.
+    - Una vez creada la aplicación, debemnos agregar el nombre de la aplicación a la lista de INSTALLED_APPS de setting.py de nuestro núcleo django.

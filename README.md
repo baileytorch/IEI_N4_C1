@@ -51,3 +51,9 @@ Clases de Backend con Django
     ```
     - nombre_aplicacion debe ser reemplazado por el nombre que Ud. le dará a su aplicación, el que debe ser descriptivo para seguir normativas de buenas prácticas.
     - Una vez creada la aplicación, debemnos agregar el nombre de la aplicación a la lista de INSTALLED_APPS de setting.py de nuestro núcleo django.
+    - Ya creada la aplicación, iniciamos el servidor para confirmar que todo está funcionando OK.
+    - El servidor se inicia con el siguiente comando mediante terminal:
+    ```
+    python manage.py runserver
+    ```
+    - Si todo ha funcionado de manera correcta, debiera cargar una vista genérica de Django al iniciar el servidor.

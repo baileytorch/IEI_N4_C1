@@ -25,3 +25,20 @@ Clases de Backend con Django
     Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
     ```
     - Una vez otorgados los permisos, podemos volver a ejecutar el comando anterior.
+
+    - Si trabajamos en varios proyectos y debemos cambiar de un ambiente a otro, desactivaremos el ambiente con el siguiente comando:
+    ```
+    deactivate
+    ```
+
+3. **Creación del Núcleo de Django**
+    - Para trabajar con Django debemos crear la estructura de directorios y la instalación de las dependencias iniciales.
+    - Debemos ubicarnos en la carpeta raíz del proyecto y crearemos un nuevo proyecto Django con el siguiente comando:
+    ```
+    pip install django
+    ```
+    - Ahora que las dependencias de Django ya han sido instaladas, crearemos nuestro primer proyecto Django, ejecutando el siguiente comando:
+    ```
+    django-admin startproject nombre_django .
+    ```
+    

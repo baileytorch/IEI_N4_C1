@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+<title>No Encontrado</title>
+{% endblock %}
+
+{% block contenido %} <section class="error-page">
+    <div class="error-container">
+        <div class="error-icon"> 📖 </div>
+        <div class="error-code"> 404 </div>
+        <h1> Página no encontrada </h1>
+        <p> Lo sentimos, pero la página que estás buscando no existe o ya no se encuentra disponible. </p> <a href="/"
+            class="btn btn-primary"> 🏠 Volver al inicio </a>
+    </div>
+</section>
+<style>
+    .error-page {
+        min-height: calc(100vh - 72px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 20px;
+        background: radial-gradient(circle at 50% 30%, #dbeafe 0, transparent 35%), #f5f7fa;
+    }
+
+    .error-container {
+        max-width: 600px;
+        text-align: center;
+    }
+
+    .error-icon {
+        font-size: 5rem;
+        margin-bottom: 10px;
+        opacity: 0.85;
+    }
+
+    .error-code {
+        font-size: 7rem;
+        line-height: 1;
+        font-weight: bold;
+        color: #2563eb;
+        margin-bottom: 15px;
+    }
+
+    .error-container h1 {
+        font-size: 2rem;
+        color: #111827;
+        margin-bottom: 15px;
+    }
+
+    .error-container p {
+        color: #6b7280;
+        font-size: 1rem;
+        line-height: 1.7;
+        margin-bottom: 30px;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 13px 22px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: all 0.2s;
+    }
+
+    .btn-primary {
+        background: #2563eb;
+        color: white;
+    }
+
+    .btn-primary:hover {
+        background: #1d4ed8;
+        transform: translateY(-2px);
+    }
+</style> {% endblock %}

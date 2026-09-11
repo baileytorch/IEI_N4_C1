@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block titulo %}    
+    <title>BiblioHUB | Gestión de Biblioteca</title>
+{% endblock %}
+    
+{% block contenido %}
+<div class="book-icon">
+                📚
+            </div>
+
+            <h1>
+                Bienvenido a <span>BiblioHUB</span>
+            </h1>
+
+            <h2>
+                Sistema de Gestión de Biblioteca
+            </h2>
+
+            <p>
+                Una sencilla plataforma para administrar libros, usuarios
+                y préstamos de manera rápida y organizada.
+                Explora nuestro catálogo y descubre un mundo de conocimiento.
+            </p>
+
+            <div class="buttons">
+                <a href="#" class="btn btn-primary">
+                    Explorar catálogo
+                </a>
+
+                <a href="#" class="btn btn-secondary">
+                    Iniciar sesión
+                </a>
+            </div>
+
+
+            <!-- Características -->
+            <div class="features">
+
+                <div class="feature">
+                    <div class="feature-icon">📖</div>
+                    <h3>Catálogo</h3>
+                    <p>Administra y consulta los libros disponibles.</p>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">👥</div>
+                    <h3>Usuarios</h3>
+                    <p>Gestiona los usuarios de la biblioteca.</p>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">🔄</div>
+                    <h3>Préstamos</h3>
+                    <p>Controla préstamos y devoluciones.</p>
+                </div>
+
+            </div> 
+
+{% endblock %}

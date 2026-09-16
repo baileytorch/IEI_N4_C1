@@ -138,8 +138,7 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
     - Cuando iniciemos nuevamente nuestro servidor, debiera cargar la vista recién creada en lugar de la vista Django por defecto.
 
 7. **Página de Error 404 Genérica**
-    - Si python NO encuentra un recurso (página) solicitado, arrojará una página de error con información del servidor, lo que involucra un serio problema de seguridad, al estar mostrando información del servidor.
-    - Para evitarlo, debemos cargar un página genérica de error, lo que lograremos de la siguiente forma:
+    - Si python NO encuentra un recurso (página) solicitado, arrojará una página de error con información del servidor, lo que involucra un serio problema de seguridad. Para evitarlo, debemos cargar un página genérica de error, lo que lograremos de la siguiente forma:
         - Deshabilitamos el modo de pruebas de nuestra aplicación en *motor_django/settings.py*:
         ```
         DEBUG = False
@@ -151,7 +150,7 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
         The requested resource was not found on this server.
         ```
 
-        - Si la aplicación NO esta corriendo en modo de prueba, implica que está en modo productivo, lo que nos debería indicar que nuestro servidor local no debería funcionar. Para resolver esto, debemos AUTORIZAR nuestro servidor local, modificando *motor_django/settings.py*:
+        - Si la aplicación NO esta corriendo en modo de prueba, implica que está en modo productivo, lo que nos debería indicar que nuestro servidor local no debería funcionar. Para resolver esto, debemos AUTORIZAR nuestro servidor local, para permitirle que funcione en modo de producción, modificando *motor_django/settings.py*:
         ```
         ALLOWED_HOSTS = ['localhost','127.0.0.1']
         ```
@@ -166,18 +165,7 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
     ```
 
     - Este comando aplicó una serie de migraciones nativas de Django en la base de datos, como permisos, usuarios, autorizaciones, sesiones, etc...
-    - El siguiente paso es aplicar NUESTRO modelo a la base de datos, para lo que debemos CREAR una nueva migracion con el comando:
-    ```
-    python manage.py makemigrations
-    ```
-    - Una vez que se ha creado nuestra nueva migración, debemos aplicarla a la base de datos, ejecutando nuevamente el comando:
-    ```
-    python manage.py migrate
-    ```
-
-    >Cada vez que modifiquemos el modelo de datos, crearemos una nueva migración y la aplicaremos a la base de datos para que se actualice de acuerdo anuestro modelo.
-
-    - Para crear los modelos debemos modificar el archivo *nombre_aplicacion/models.py* y agregar las *clases* que hemos determinado para nuestro proyecto. Idealmente debiéramos tener un diagrama entidad-relación o uno de clases.
+    - El siguiente paso es aplicar NUESTRO modelo a la base de datos. Para crear los modelos debemos modificar el archivo *nombre_aplicacion/models.py* y agregar las *clases* que hemos determinado para nuestro proyecto. Idealmente debiéramos tener un diagrama entidad-relación o uno de clases.
     - Nuestras clases se crearán heredando desde *models* de Django, para poder acceder a los ditintos tipos de datos que deberá tener como atributos.
     - Estructura de creación de una clase:
     ```
@@ -202,3 +190,28 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
         created_at = models.DateTimeField(default=ahora)
         updated_at = models.DateTimeField(auto_now=True)
     ```
+
+    - Con nuestras clases ya creadas, debemos GENERAR una nueva migracion con el comando:
+    ```
+    python manage.py makemigrations
+    ```
+
+    - Una vez que se ha creado nuestra nueva migración, debemos aplicarla a la base de datos, ejecutando nuevamente el comando:
+    ```
+    python manage.py migrate
+    ```
+
+    >Cada vez que modifiquemos el modelo de datos, crearemos una nueva migración y la aplicaremos a la base de datos para que se actualice de acuerdo a nuestro modelo.
+
+    
+> Para poder mantener las librerias actualizadas y estandarizadas para todo el equipo de desarrollo, crearemos un archivo de requerimientos con el siguiente comando:
+```
+pip freeze > requirements.txt
+```
+
+> Este archivo tendrá una lista de todas las librerías incluídas en nuestro *VENV*, la que podrá ser instalada en cualquier nuevo *VENV* ejecutando el siguiente comando:
+```
+pip install -r requirements.txt
+```
+
+> Cada vez que agreguemos una nueva librería actualizaremos el archivo de requerimientos con el comando *FREEZE*.

@@ -17,3 +17,16 @@ class Autor(models.Model):
     nacionalidad = models.ForeignKey(Pais,on_delete=models.CASCADE)
     fecha_nacimiento = models.DateField(null=False)
     fecha_defuncion = models.DateField(null=True)
+
+class Comuna(models.Model):
+    codigo = models.CharField(max_length=5,null=False)
+    comuna = models.CharField(max_length=60,null=False)
+
+class Direccion(models.Model):
+    pass
+
+class Biblioteca(models.Model):
+    nombre = models.CharField(max_length=100,null=False)
+    web = models.URLField(max_length=254,null=True)
+    correo = models.EmailField(null=True)
+    telefono = models.CharField(max_length=15,null=True)

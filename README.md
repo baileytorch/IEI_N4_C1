@@ -203,7 +203,7 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
 
     >Cada vez que modifiquemos el modelo de datos, crearemos una nueva migración y la aplicaremos a la base de datos para que se actualice de acuerdo a nuestro modelo.
 
-    
+___   
 > Para poder mantener las librerias actualizadas y estandarizadas para todo el equipo de desarrollo, crearemos un archivo de requerimientos con el siguiente comando:
 ```
 pip freeze > requirements.txt

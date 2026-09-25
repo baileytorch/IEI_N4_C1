@@ -203,6 +203,36 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
 
     >Cada vez que modifiquemos el modelo de datos, crearemos una nueva migración y la aplicaremos a la base de datos para que se actualice de acuerdo a nuestro modelo.
 
+9. **Manejo de Base de Datos**
+
+    Una base de datos en entornos profesionales debe controlarse con usuarios específicos con permisos otorgados explícitamente. Esto lo lograremos ejecutando sentencias SQL directamente en el motor de DB, de la siguiente forma:
+
+    - Crear usuario remoto 'Usuario' con contraseña 'mi_contraseña'
+    ```
+    CREATE USER 'Usuario'@'%' IDENTIFIED BY 'mi_contraseña';
+    ```
+
+    - Conceder privilegios para una base de datos específica al usuario remoto 'Usuario' (por ejemplo, 'mi_base_datos')
+    ```
+    GRANT ALL PRIVILEGES ON mi_base_datos.* TO 'Usuario'@'%';
+    ```
+
+    - Aplicar los cambios de privilegios (permisos)
+    ```
+    FLUSH PRIVILEGES;
+    ```
+
+    - ORM: Para comunicarnos con la DB usaremos un ORM (*Object Relational Mapping*), que se encargará de entender los objetos (por el lado del código) y las entidades (por el lado de la base de datos). Usaremos SqlAlchemy, el que se instalará mediante la ejecución del siguiente comando en el terminal:
+
+    | Código |          | Base de datos |
+    | -------- | -------- | -------- |
+    | Clase | <------> | Entidad |
+    | objeto | <------> | registro |
+
+    ```
+    pip install SQLAlchemy mysqlclient
+    ```
+
 ___   
 > Para poder mantener las librerias actualizadas y estandarizadas para todo el equipo de desarrollo, crearemos un archivo de requerimientos con el siguiente comando:
 ```

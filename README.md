@@ -235,6 +235,7 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
     ```
 
 10. **Desacoplar Datos Sensibles**
+
     Ahora que ya estamos trabajando con una DB externa, debemos usar credenciales para conectarnos a esta nueva DB. Cualquier credencial o dato sensible no debería existir en código, incluyendo la *'SECRET_KEY'* de Django, por lo que debemos *DESACOPLAR* esos datos y ponerlos en un archivo de ambiente.
 
     - Instalamos la librería *decouple* para desacoplar los datos y posteriormente leerlos desde un archivo de ambiente. El siguiente comando será necesario para instalar la librería:
@@ -262,6 +263,7 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
     El mismo procedimiento debemos usar para procesar la información de la base de datos.
 
 11. **Incorporar Modelo de Datos al administrador de Django**
+
     En el archivo *mi_aplicacion/admin.py* debemos *REGISTRAR* nuestro modelo de datos, para que el admin de django pueda procesar los datos y generar toda la estructura de *vistas* que nos permitan hacer este trabajo.
     Esto lo lograremos de la siguiente forma:
     *admin.py*

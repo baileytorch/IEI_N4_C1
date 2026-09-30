@@ -222,16 +222,59 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
     FLUSH PRIVILEGES;
     ```
 
-    - ORM: Para comunicarnos con la DB usaremos un ORM (*Object Relational Mapping*), que se encargará de entender los objetos (por el lado del código) y las entidades (por el lado de la base de datos). Usaremos SqlAlchemy, el que se instalará mediante la ejecución del siguiente comando en el terminal:
+    - ORM: Para comunicarnos con la DB usaremos un ORM (*Object Relational Mapping*), que se encargará de entender los objetos (por el lado del código) y las entidades (por el lado de la base de datos). 
 
     | Código |          | Base de datos |
     | -------- | -------- | -------- |
     | Clase | <------> | Entidad |
     | objeto | <------> | registro |
 
+    - Usaremos SqlAlchemy, el que se instalará mediante la ejecución del siguiente comando en el terminal:
     ```
     pip install SQLAlchemy mysqlclient
     ```
+
+10. **Desacoplar Datos Sensibles**
+    Ahora que ya estamos trabajando con una DB externa, debemos usar credenciales para conectarnos a esta nueva DB. Cualquier credencial o dato sensible no debería existir en código, incluyendo la *'SECRET_KEY'* de Django, por lo que debemos *DESACOPLAR* esos datos y ponerlos en un archivo de ambiente.
+
+    - Instalamos la librería *decouple* para desacoplar los datos y posteriormente leerlos desde un archivo de ambiente. El siguiente comando será necesario para instalar la librería:
+    ```
+    pip install python-decouple
+    ```
+
+    - Creamos un archivo *.env* (archivo de ambiente) en el directorio principal de la aplicación o donde se encuentre su archivo *manage.py*.
+
+    - En el archivo *.env* ponemos los datos sensibles en variables que tendrán como valor el dato. Es importante no dejar espacios entre el nombre de la variable y la asignación del valor:
+    ```
+    SECRET_KEY='cadena_de_caracteres_django_secret_key'
+    ```
+
+    - Donde necesitemos usar ese dato, generalmente en *setting.py*, importaremos el método *config* de la librería *decouple* para acceder a los datos almacenados en el arhvo de ambiente, de la siguiente forma:
+    *settings.py*
+    ```
+    from decouple import config
+
+    SECRET_KEY = config('SECRET_KEY')
+    ```
+
+    El método *config* traerá el valor de la variable almacenada en el archivo de ambiente que tenga el nombre que le pasamos al método como argumento.
+
+    El mismo procedimiento debemos usar para procesar la información de la base de datos.
+
+11. **Incorporar Modelo de Datos al administrador de Django**
+    En el archivo *mi_aplicacion/admin.py* debemos *REGISTRAR* nuestro modelo de datos, para que el admin de django pueda procesar los datos y generar toda la estructura de *vistas* que nos permitan hacer este trabajo.
+    Esto lo lograremos de la siguiente forma:
+    *admin.py*
+    ```
+    from django.contrib import admin
+    from .models import MiClase
+    from .models import MiClase2
+
+    # Register your models here.
+    admin.site.register(MiClase)
+    admin.site.register(MiClase2)
+    ```
+
 
 ___   
 > Para poder mantener las librerias actualizadas y estandarizadas para todo el equipo de desarrollo, crearemos un archivo de requerimientos con el siguiente comando:

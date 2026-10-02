@@ -243,14 +243,14 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
     pip install python-decouple
     ```
 
-    - Creamos un archivo *.env* (archivo de ambiente) en el directorio principal de la aplicación o donde se encuentre su archivo *manage.py*.
+    - Creamos un archivo *.env* (archivo de ambiente, env de environment) en el directorio principal de la aplicación o donde se encuentre su archivo *manage.py*.
 
     - En el archivo *.env* ponemos los datos sensibles en variables que tendrán como valor el dato. Es importante no dejar espacios entre el nombre de la variable y la asignación del valor:
     ```
     SECRET_KEY='cadena_de_caracteres_django_secret_key'
     ```
 
-    - Donde necesitemos usar ese dato, generalmente en *setting.py*, importaremos el método *config* de la librería *decouple* para acceder a los datos almacenados en el arhvo de ambiente, de la siguiente forma:
+    - Donde necesitemos usar ese dato, generalmente en *setting.py*, importaremos el método *config* de la librería *decouple* para acceder a los datos almacenados en el archivo de ambiente, de la siguiente forma:
     *settings.py*
     ```
     from decouple import config
@@ -281,7 +281,7 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
     
 12. **Incorporar Modelo de Datos al administrador de Django**
 
-    En el archivo *mi_aplicacion/admin.py* debemos *REGISTRAR* nuestro modelo de datos, para que el admin de django pueda procesar los datos y generar toda la estructura de *vistas* que nos permitan hacer este trabajo.
+    En el archivo *mi_aplicacion/admin.py* debemos *REGISTRAR* nuestro modelo de datos, para que el admin de django pueda procesar los datos.
     Esto lo lograremos de la siguiente forma:
     *admin.py*
     ```

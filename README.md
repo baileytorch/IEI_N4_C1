@@ -262,7 +262,24 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
 
     El mismo procedimiento debemos usar para procesar la información de la base de datos.
 
-11. **Incorporar Modelo de Datos al administrador de Django**
+11. **Instalación Django Rest Framework**
+
+    Django Rest Framework es una librería que contiene muchas herramientas que usaremos en nuestro desarrollo django, como los serializadores.
+    Para instalarlo ejecutaremos el siguiente comando mediante terminal:
+    ```
+    pip install djangorestframework
+    ```
+
+    Una vez que se ha instalado, debemos agregarlo a la lista de *INSTALLED_APPS* en *settings.py* de nuestro motor Django.
+    ```
+    INSTALLED_APPS = [
+        ...
+        'rest_framework',
+        ...
+    ]
+    ```
+    
+12. **Incorporar Modelo de Datos al administrador de Django**
 
     En el archivo *mi_aplicacion/admin.py* debemos *REGISTRAR* nuestro modelo de datos, para que el admin de django pueda procesar los datos y generar toda la estructura de *vistas* que nos permitan hacer este trabajo.
     Esto lo lograremos de la siguiente forma:
@@ -276,6 +293,44 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
     admin.site.register(MiClase)
     admin.site.register(MiClase2)
     ```
+
+13. **Creación de Serializadores**
+
+    La librería *rest_framework* que instalamos anteriormente, tiene la herramienta para serializar nuestro modelo de datos en formato *JSON*, lo que lograremos siguiendo estos pasos:
+    - Primero crearemos un archivo *serializer.py* en el directorio de nuestra aplicación.
+    - En el archivo creado, importaremos *serializers* para usarlos en la serialización de nuestro modelo.
+    - Junto con esto, debemos importar todo nuestro modelo de datos desde *models.py*.
+    - Finalmente, crearemos una clase que se encargará de serializar cada uno de nuestros modelos de datos.
+
+    El archivo debierea quedar como el siguiente ejemplo:
+    ```
+    from rest_framework import serializers
+
+    from .models import MiClase
+    from .models import MiClase2
+
+    class MiClaseSerializer(serializers.ModelSerializer):
+        class Meta:
+            model = MiClase
+            fileds = ('__all__')
+            # __all__ serializa todas los atributos de la clase/modelo
+
+    class MiClase2Serializer(serializers.ModelSerializer):
+        class Meta:
+            model = MiClase2
+            fileds = ('atributo_referenciado','atributo_2')
+            # De esta forma nosotros decidimos qué atributos de nuestra clase/modelo se serializarán
+    ```
+
+14. **Crear un Usuario Admin de Django**
+
+    El usuario *ADMIN* de Django es el que tendrá control de la aplicación y de las vistas *CRUD* de nuestro modelo de datos.
+    Para crearlo, ejecutaremos el siguiente comando mediante nuestro terminal:
+    ```
+    python manage.py createsuperuser
+    ```
+
+    Una vez que jecutamos el comando, este nos pedirá la información del usuario mediante el mismo terminal.
 
 
 ___   

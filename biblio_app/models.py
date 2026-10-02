@@ -17,8 +17,6 @@ class Pais(models.Model):
     iso_2 = models.CharField("ISO 2",max_length=2,null=False)
     iso_3 = models.CharField("ISO 3",max_length=3,null=False)
     habilitado = models.BooleanField(str_habilitado,default=True,null=False)
-    created_at = models.DateTimeField(str_fecha_creacion,auto_now_add=True)
-    updated_at = models.DateTimeField(str_fecha_actualizacion,auto_now=True)
     class Meta:
         db_table_comment = "Información de paises del mundo, para asociar a autores y lectores."
 
@@ -26,8 +24,6 @@ class Region(models.Model):
     codigo = models.CharField(str_codigo,max_length=2,null=False)
     region = models.CharField("Región",max_length=30,null=False)
     habilitado = models.BooleanField(str_habilitado,default=True,null=False)
-    created_at = models.DateTimeField(str_fecha_creacion,auto_now_add=True)
-    updated_at = models.DateTimeField(str_fecha_actualizacion,auto_now=True)
     class Meta:
         db_table_comment = "Regiones de Chile, data de SUBDERE."
 
@@ -36,8 +32,6 @@ class Provincia(models.Model):
     provincia = models.CharField("Provincia",max_length=50,null=False)
     region = models.ForeignKey(Region,on_delete=models.CASCADE,null=False)
     habilitado = models.BooleanField(str_habilitado,default=True,null=False)
-    created_at = models.DateTimeField(str_fecha_creacion,auto_now_add=True)
-    updated_at = models.DateTimeField(str_fecha_actualizacion,auto_now=True)
     class Meta:
         db_table_comment = "Provincias de Chile, data de SUBDERE. Pertenece a una región específica."
 
@@ -46,8 +40,6 @@ class Comuna(models.Model):
     comuna = models.CharField("Comuna",max_length=60,null=False)
     provincia = models.ForeignKey(Provincia,on_delete=models.CASCADE,null=False)
     habilitado = models.BooleanField(str_habilitado,default=True,null=False)
-    created_at = models.DateTimeField(str_fecha_creacion,auto_now_add=True)
-    updated_at = models.DateTimeField(str_fecha_actualizacion,auto_now=True)
     class Meta:
         db_table_comment = "Comunas de Chile, data de SUBDERE. Pertenece a una provincia específica."
 

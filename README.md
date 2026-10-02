@@ -229,7 +229,7 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
     | Clase | <------> | Entidad |
     | objeto | <------> | registro |
 
-    - Usaremos SqlAlchemy, el que se instalará mediante la ejecución del siguiente comando en el terminal:
+    - Usaremos *SqlAlchemy* como *ORM*, junto con el driver de base de datos *mysqlclient*, los que se instalarán mediante la ejecución del siguiente comando en el terminal:
     ```
     pip install SQLAlchemy mysqlclient
     ```

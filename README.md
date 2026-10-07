@@ -302,7 +302,7 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
     - Junto con esto, debemos importar todo nuestro modelo de datos desde *models.py*.
     - Finalmente, crearemos una clase que se encargará de serializar cada uno de nuestros modelos de datos.
 
-    El archivo debierea quedar como el siguiente ejemplo:
+    El archivo debiera quedar como el siguiente ejemplo:
     ```
     from rest_framework import serializers
 
@@ -322,7 +322,20 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
             # De esta forma nosotros decidimos qué atributos de nuestra clase/modelo se serializarán
     ```
 
-14. **Crear un Usuario Admin de Django**
+14. **Creación de Vistas CBV**
+
+    CBV es el acrónimo de Class Based View o *Vista Basada en Clase*, es una colección de vistas basadas en un modelo de datos y que nos permiten hacer *CRUD* de los datos de ese modelo.
+    Las vistas basadas en clase se crearán dentro de *mi_aplicacion/views.py*, nuestro archivo controlador, siguiendo las siguientes instrucciones:
+    - Importamos todos nuestros modelos de datos al archivo *views.py*.
+    - Junto con la importación de las clases, importamos nuestros serializadores, puesto que se ancargarán de dejar los datos en un formato que podramos usar en las vistas.
+    - con todo esto ya podemos crear nuestro *ViewSet*, o colección de vistas para trabajar con los datos del modelo desde Django Admin.
+
+    El archivo debería quedar de la siguiente forma:
+    ```
+    
+    ```
+
+15. **Crear un Usuario Admin de Django**
 
     El usuario *ADMIN* de Django es el que tendrá control de la aplicación y de las vistas *CRUD* de nuestro modelo de datos.
     Para crearlo, ejecutaremos el siguiente comando mediante nuestro terminal:

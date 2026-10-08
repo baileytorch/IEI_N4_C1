@@ -8,13 +8,14 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
 ## Creación de Proyectos con Django
 
 1. **Creación de Ambiente Virtual**
-    - Un ambiente virtual mantendrá aislada toda la configuración de nuestro proyecto y su entorno de trabajo.
-    - Habiendo creado nuestro repositorio, abrimos la carpeta contenedora en VS Code.</li>
-    - Iniciamos un nuevo terminal, estando ubicados en el directorio principal.</li>
+    - El primer paso será crear un repositorio en Github, donde dejaremos almacenado el código de nuestro proyecto y lo clonaremos en nuestra máquina local. Recuerde la importancia de crearlo con un archivo README.md y un archivo .gitignore generado con el repo para que desde el incio tenga una lista de los archivos que NO deben subirse al repositorio.
+    - Habiendo creado y clonado nuestro repositorio, abrimos la carpeta contenedora en VS Code.
+    - Dentro de este directorio, crearemos un ambiente virtual que mantendrá aislada toda la configuración de nuestro proyecto y su entorno de trabajo.
+    - Para lograrlo, iniciaremos un nuevo terminal, estando ubicados en el directorio principal.
     - Para crear el ambiente virtual, ejecutamos el siguiente comando en el terminal:
-    ```
-    python -m venv nombre_ambiente
-    ```
+        ```
+        python -m venv nombre_ambiente
+        ```
 
     - *VENV* es acrónimo de *VIRTUAL ENVIRONMENT*, por lo que debemos entender que creará nuestro ambiente virtual.
     - *nombre_ambiente* debe ser reemplazado por el nombre que Ud. le quiera dar a su ambiente virtual. Es recomendable que sea corto y descriptivo.
@@ -332,10 +333,12 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
 
     El archivo debería quedar de la siguiente forma:
     ```
-    
-    ```
 
-15. **Crear un Usuario Admin de Django**
+    ```
+    
+15. **Creación de Rutas**
+
+16. **Crear un Usuario Admin de Django**
 
     El usuario *ADMIN* de Django es el que tendrá control de la aplicación y de las vistas *CRUD* de nuestro modelo de datos.
     Para crearlo, ejecutaremos el siguiente comando mediante nuestro terminal:

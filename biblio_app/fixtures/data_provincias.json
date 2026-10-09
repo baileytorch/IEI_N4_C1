@@ -1,0 +1,506 @@
+[
+    {
+        "model": "biblio_app.provincia",
+        "pk": 1,
+        "fields": {
+            "codigo": "011",
+            "provincia": "Iquique",
+            "region_id": 1
+        }
+    },
+    {
+        "model": "biblio_app.provincia",
+        "pk": 2,
+        "fields": {
+            "codigo": "014",
+            "provincia": "Tamarugal",
+            "region_id": 1
+        }
+    },
+    {
+        "model": "biblio_app.provincia",
+        "pk": 3,
+        "fields": {
+            "codigo": "021",
+            "provincia": "Antofagasta",
+            "region_id": 2
+        }
+    },
+    {
+        "model": "biblio_app.provincia",
+        "pk": 4,
+        "fields": {
+            "codigo": "022",
+            "provincia": "El Loa",
+            "region_id": 2
+        }
+    },
+    {
+        "model": "biblio_app.provincia",
+        "pk": 5,
+        "fields": {
+            "codigo": "023",
+            "provincia": "Tocopilla",
+            "region_id": 2
+        }
+    },
+    {
+        "model": "biblio_app.provincia",
+        "pk": 6,
+        "fields": {
+            "codigo": "031",
+            "provincia": "Copiapó",
+            "region_id": 3
+        }
+    },
+    {
+        "model": "biblio_app.provincia",
+        "pk": 7,
+        "fields": {
+            "codigo": "032",
+            "provincia": "Chañaral",
+            "region_id": 3
+        }
+    },
+    {
+        "model": "biblio_app.provincia",
+        "pk": 8,
+        "fields": {
+            "codigo": "033",
+            "provincia": "Huasco",
+            "region_id": 3
+        }
+    },
+    {
+        "model": "biblio_app.provincia",
+        "pk": 9,
+        "fields": {
+            "codigo": "041",
+            "provincia": "Elqui",
+            "region_id": 4
+        }
+    },
+    {
+        "model": "biblio_app.provincia",
+        "pk": 10,
+        "fields": {
+            "codigo": "042",
+            "provincia": "Choapa",
+            "region_id": 4
+        }
+    },
+    {
+        "model": "biblio_app.provincia",
+        "pk": 11,
+        "fields": {
+            "codigo": "043",
+            "provincia": "Limarí",
+            "region_id": 4
+        }
+    },
+    {
+        "model": "biblio_app.provincia",
+        "pk": 12,
+        "fields": {
+            "codigo": "051",
+            "provincia": "Valparaíso",
+            "region_id": 5
+        }
+    },
+    {
+        "model": "biblio_app.provincia",
+        "pk": 13,
+        "fields": {
+            "codigo": "052",
+            "provincia": "Isla de Pascua",
+            "region_id": 5
+        }
+    },
+    {
+        "model": "biblio_app.provincia",
+        "pk": 14,
+        "fields": {
+            "codigo": "053",
+            "provincia": "Los Andes",
+            "region_id": 5
+        }
+    },
+    {
+        "model": "biblio_app.provincia",
+        "pk": 15,
+        "fields": {
+            "codigo": "054",
+            "provincia": "Petorca",
+            "region_id": 5
+        }
+    },
+    {
+        "model": "biblio_app.provincia",
+        "pk": 16,
+        "fields": {
+            "codigo": "055",
+            "provincia": "Quillota",
+            "region_id": 5
+        }
+    },
+    {
+        "model": "biblio_app.provincia",
+        "pk": 17,
+        "fields": {
+            "codigo": "056",
+            "provincia": "San Antonio",
+            "region_id": 5
+        }
+    },
+    {
+        "model": "biblio_app.provincia",
+        "pk": 18,
+        "fields": {
+            "codigo": "057",
+            "provincia": "San Felipe de Aconcagua",
+            "region_id": 5
+        }
+    },
+    {
+        "model": "biblio_app.provincia",
+        "pk": 19,
+        "fields": {
+            "codigo": "058",
+            "provincia": "Marga Marga",
+            "region_id": 5
+        }
+    },
+    {
+        "model": "biblio_app.provincia",
+        "pk": 20,
+        "fields": {
+            "codigo": "061",
+            "provincia": "Cachapoal",
+            "region_id": 6
+        }
+    },
+    {
+        "model": "biblio_app.provincia",
+        "pk": 21,
+        "fields": {
+            "codigo": "062",
+            "provincia": "Cardenal Caro",
+            "region_id": 6
+        }
+    },
+    {
+        "model": "biblio_app.provincia",
+        "pk": 22,
+        "fields": {
+            "codigo": "092",
+            "provincia": "Malleco",
+            "region_id": 9
+        }
+    },
+    {
+        "model": "biblio_app.provincia",
+        "pk": 23,
+        "fields": {
+            "codigo": "063",
+            "provincia": "Colchagua",
+            "region_id": 6
+        }
+    },
+    {
+        "model": "biblio_app.provincia",
+        "pk": 24,
+        "fields": {
+            "codigo": "071",
+            "provincia": "Talca",
+            "region_id": 7
+        }
+    },
+    {
+        "model": "biblio_app.provincia",
+        "pk": 25,
+        "fields": {
+            "codigo": "072",
+            "provincia": "Cauquenes",
+            "region_id": 7
+        }
+    },
+    {
+        "model": "biblio_app.provincia",
+        "pk": 26,
+        "fields": {
+            "codigo": "073",
+            "provincia": "Curicó",
+            "region_id": 7
+        }
+    },
+    {
+        "model": "biblio_app.provincia",
+        "pk": 27,
+        "fields": {
+            "codigo": "074",
+            "provincia": "Linares",
+            "region_id": 7
+        }
+    },
+    {
+        "model": "biblio_app.provincia",
+        "pk": 28,
+        "fields": {
+            "codigo": "081",
+            "provincia": "Concepción",
+            "region_id": 8
+        }
+    },
+    {
+        "model": "biblio_app.provincia",
+        "pk": 29,
+        "fields": {
+            "codigo": "082",
+            "provincia": "Arauco",
+            "region_id": 8
+        }
+    },
+    {
+        "model": "biblio_app.provincia",
+        "pk": 30,
+        "fields": {
+            "codigo": "083",
+            "provincia": "Biobío",
+            "region_id": 8
+        }
+    },
+    {
+        "model": "biblio_app.provincia",
+        "pk": 31,
+        "fields": {
+            "codigo": "091",
+            "provincia": "Cautín",
+            "region_id": 9
+        }
+    },
+    {
+        "model": "biblio_app.provincia",
+        "pk": 32,
+        "fields": {
+            "codigo": "101",
+            "provincia": "Llanquihue",
+            "region_id": 1
+        }
+    },
+    {
+        "model": "biblio_app.provincia",
+        "pk": 33,
+        "fields": {
+            "codigo": "102",
+            "provincia": "Chiloé",
+            "region_id": 1
+        }
+    },
+    {
+        "model": "biblio_app.provincia",
+        "pk": 34,
+        "fields": {
+            "codigo": "103",
+            "provincia": "Osorno",
+            "region_id": 1
+        }
+    },
+    {
+        "model": "biblio_app.provincia",
+        "pk": 35,
+        "fields": {
+            "codigo": "104",
+            "provincia": "Palena",
+            "region_id": 1
+        }
+    },
+    {
+        "model": "biblio_app.provincia",
+        "pk": 36,
+        "fields": {
+            "codigo": "111",
+            "provincia": "Coyhaique",
+            "region_id": 1
+        }
+    },
+    {
+        "model": "biblio_app.provincia",
+        "pk": 37,
+        "fields": {
+            "codigo": "112",
+            "provincia": "Aysén",
+            "region_id": 1
+        }
+    },
+    {
+        "model": "biblio_app.provincia",
+        "pk": 38,
+        "fields": {
+            "codigo": "113",
+            "provincia": "Capitán Prat",
+            "region_id": 1
+        }
+    },
+    {
+        "model": "biblio_app.provincia",
+        "pk": 39,
+        "fields": {
+            "codigo": "114",
+            "provincia": "General Carrera",
+            "region_id": 1
+        }
+    },
+    {
+        "model": "biblio_app.provincia",
+        "pk": 40,
+        "fields": {
+            "codigo": "121",
+            "provincia": "Magallanes",
+            "region_id": 1
+        }
+    },
+    {
+        "model": "biblio_app.provincia",
+        "pk": 41,
+        "fields": {
+            "codigo": "122",
+            "provincia": "Antártica Chilena",
+            "region_id": 1
+        }
+    },
+    {
+        "model": "biblio_app.provincia",
+        "pk": 42,
+        "fields": {
+            "codigo": "123",
+            "provincia": "Tierra del Fuego",
+            "region_id": 1
+        }
+    },
+    {
+        "model": "biblio_app.provincia",
+        "pk": 43,
+        "fields": {
+            "codigo": "124",
+            "provincia": "Última Esperanza",
+            "region_id": 1
+        }
+    },
+    {
+        "model": "biblio_app.provincia",
+        "pk": 44,
+        "fields": {
+            "codigo": "131",
+            "provincia": "Santiago",
+            "region_id": 1
+        }
+    },
+    {
+        "model": "biblio_app.provincia",
+        "pk": 45,
+        "fields": {
+            "codigo": "132",
+            "provincia": "Cordillera",
+            "region_id": 1
+        }
+    },
+    {
+        "model": "biblio_app.provincia",
+        "pk": 46,
+        "fields": {
+            "codigo": "133",
+            "provincia": "Chacabuco",
+            "region_id": 1
+        }
+    },
+    {
+        "model": "biblio_app.provincia",
+        "pk": 47,
+        "fields": {
+            "codigo": "134",
+            "provincia": "Maipo",
+            "region_id": 1
+        }
+    },
+    {
+        "model": "biblio_app.provincia",
+        "pk": 48,
+        "fields": {
+            "codigo": "135",
+            "provincia": "Melipilla",
+            "region_id": 1
+        }
+    },
+    {
+        "model": "biblio_app.provincia",
+        "pk": 49,
+        "fields": {
+            "codigo": "136",
+            "provincia": "Talagante",
+            "region_id": 1
+        }
+    },
+    {
+        "model": "biblio_app.provincia",
+        "pk": 50,
+        "fields": {
+            "codigo": "141",
+            "provincia": "Valdivia",
+            "region_id": 1
+        }
+    },
+    {
+        "model": "biblio_app.provincia",
+        "pk": 51,
+        "fields": {
+            "codigo": "142",
+            "provincia": "Ranco",
+            "region_id": 1
+        }
+    },
+    {
+        "model": "biblio_app.provincia",
+        "pk": 52,
+        "fields": {
+            "codigo": "151",
+            "provincia": "Arica",
+            "region_id": 1
+        }
+    },
+    {
+        "model": "biblio_app.provincia",
+        "pk": 53,
+        "fields": {
+            "codigo": "152",
+            "provincia": "Parinacota",
+            "region_id": 1
+        }
+    },
+    {
+        "model": "biblio_app.provincia",
+        "pk": 54,
+        "fields": {
+            "codigo": "161",
+            "provincia": "Diguillín",
+            "region_id": 1
+        }
+    },
+    {
+        "model": "biblio_app.provincia",
+        "pk": 55,
+        "fields": {
+            "codigo": "162",
+            "provincia": "Itata",
+            "region_id": 1
+        }
+    },
+    {
+        "model": "biblio_app.provincia",
+        "pk": 56,
+        "fields": {
+            "codigo": "163",
+            "provincia": "Punilla",
+            "region_id": 1
+        }
+    }
+]

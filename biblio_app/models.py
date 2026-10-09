@@ -22,7 +22,7 @@ class Pais(models.Model):
 
 class Region(models.Model):
     codigo = models.CharField(str_codigo,max_length=2,null=False)
-    region = models.CharField("Región",max_length=30,null=False)
+    region = models.CharField("Región",max_length=41,null=False)
     habilitado = models.BooleanField(int_habilitado,default=True,null=False)
     class Meta:
         db_table_comment = "Regiones de Chile, data de SUBDERE."

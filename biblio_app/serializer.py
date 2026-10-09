@@ -28,3 +28,18 @@ class DireccionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Direccion
         fields = ('comuna','calle','numero','departamento')
+
+class BibliotecaSerializer(serializers.ModelSerializer):
+    class Meta:
+      model = Biblioteca
+      fields = ()
+
+class AutorSerializer(serializers.ModelSerializer):
+    class Meta:
+      model = Autor
+      fields = ()
+
+class GeneroSerializer(serializers.ModelSerializer):
+    class Meta:
+      model = Genero
+      fields = ()

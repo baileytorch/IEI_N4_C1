@@ -197,7 +197,65 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
 
         - Para que se muestre una página de error creada por nosotros, dentro del directorio *templates* creado anteriormente, crearemos un archivo *html* de nombre *404*. Django buscará en este directorio ese archivo y lo cargará al no encontrar un recurso.
 
-9. **Modelo de Datos**
+9 **Manejo de Archivos Estáticos**
+    Para cargar y usar tus propios archivos estáticos (CSS, JavaScript, imágenes) en Django, sigue estos pasos básicos.
+    - Asegúrate de que en tu archivo *motor_django/settings.py* esté configurado el STATIC_URL y la ruta donde Django buscará los archivos:
+        ```
+        STATIC_URL = 'static/'
+
+        # Opcional: Directorios globales adicionales para archivos estáticos
+        STATICFILES_DIRS = [
+            BASE_DIR / "static",
+        ]
+        ```
+    
+    - Puedes poner tus archivos estáticos en un directorio dentro de tu aplicación o en la carpeta raíz del proyecto, creando un directorio *static* y dentro de ese directorio, generar los que sean necesarios para mantener el orden del sistema y separar distintos tipos de archivos.
+
+10. **Manejo de Base de Datos**
+
+    Una base de datos en entornos profesionales debe controlarse con usuarios específicos con permisos otorgados explícitamente. Esto lo lograremos ejecutando sentencias SQL directamente en el motor de DB, de la siguiente forma:
+    - Crear usuario remoto 'Usuario' con contraseña 'mi_contraseña'
+        ```
+        CREATE USER 'Usuario'@'%' IDENTIFIED BY 'mi_contraseña';
+        ```
+
+    - Conceder privilegios para una base de datos específica al usuario remoto 'Usuario' (por ejemplo, 'mi_base_datos')
+        ```
+        GRANT ALL PRIVILEGES ON mi_base_datos.* TO 'Usuario'@'%';
+        ```
+
+    - Aplicar los cambios de privilegios (permisos)
+        ```
+        FLUSH PRIVILEGES;
+        ```
+
+    - ORM: Para comunicarnos con la DB usaremos un ORM (*Object Relational Mapping*), que se encargará de entender los objetos (por el lado del código) y las entidades (por el lado de la base de datos). 
+
+        | Código |          | Base de datos |
+        | -------- | -------- | -------- |
+        | Clase | <------> | Entidad |
+        | objeto | <------> | registro |
+
+    - Usaremos *SqlAlchemy* como *ORM*, junto con el driver de base de datos *mysqlclient*, los que se instalarán mediante la ejecución del siguiente comando en el terminal:
+        ```
+        pip install SQLAlchemy mysqlclient
+        ```
+
+    - Una vez con la base de datos creada, procedemos a modificar nuestro archivo settings.py. Indicamos que haremos uso del gestor MySQL, en vez de SQLite que usa por defecto Django, modificando la sección *DATABASES* del archivo *motor_django/settings.py*:
+    ```
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'mi_db',
+            'USER': 'mi_usuario',
+            'PASSWORD': 'mi_password',
+            'HOST': 'localhost',
+            'PORT': '3306'
+        }
+    }
+    ```
+
+11. **Modelo de Datos**
     - Django controlará la base de datos mediante migraciones, scripts de bases de datos que modificarán la estructura de datos.
     - Django maneja varias tablas de manera predeterminada para información interna, para que se creen en la DB, debemos ejecutar el comando:
         ```
@@ -272,54 +330,7 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
 
     > Cada vez que modifiquemos el modelo de datos, crearemos una nueva migración y la aplicaremos a la base de datos para que se actualice de acuerdo a nuestro modelo.
 
-10. **Manejo de Base de Datos**
-
-    Una base de datos en entornos profesionales debe controlarse con usuarios específicos con permisos otorgados explícitamente. Esto lo lograremos ejecutando sentencias SQL directamente en el motor de DB, de la siguiente forma:
-    - Para un usuario remoto:
-        - Crear usuario remoto 'Usuario' con contraseña 'mi_contraseña'
-            ```
-            CREATE USER 'Usuario'@'%' IDENTIFIED BY 'mi_contraseña';
-            ```
-
-        - Conceder privilegios para una base de datos específica al usuario remoto 'Usuario' (por ejemplo, 'mi_base_datos')
-            ```
-            GRANT ALL PRIVILEGES ON mi_base_datos.* TO 'Usuario'@'%';
-            ```
-
-        - Aplicar los cambios de privilegios (permisos)
-            ```
-            FLUSH PRIVILEGES;
-            ```
-    
-    - Para un usuario local:
-        - Crear usuario local 'Usuario' con contraseña 'mi_contraseña'
-            ```
-            CREATE USER 'Usuario'@'localhost' IDENTIFIED BY 'mi_contraseña';
-            ```
-
-        - Conceder privilegios para una base de datos específica al usuario local 'Usuario' (por ejemplo, 'mi_base_datos')
-            ```
-            GRANT ALL PRIVILEGES ON mi_base_datos.* TO 'Usuario'@'localhost';
-            ```
-
-        - Aplicar los cambios de privilegios (permisos)
-            ```
-            FLUSH PRIVILEGES;
-            ```
-
-    - ORM: Para comunicarnos con la DB usaremos un ORM (*Object Relational Mapping*), que se encargará de entender los objetos (por el lado del código) y las entidades (por el lado de la base de datos). 
-
-        | Código |          | Base de datos |
-        | -------- | -------- | -------- |
-        | Clase | <------> | Entidad |
-        | objeto | <------> | registro |
-
-    - Usaremos *SqlAlchemy* como *ORM*, junto con el driver de base de datos *mysqlclient*, los que se instalarán mediante la ejecución del siguiente comando en el terminal:
-        ```
-        pip install SQLAlchemy mysqlclient
-        ```
-
-11. **Datos Iniciales de la Aplicación**
+12. **Datos Iniciales de la Aplicación**
 
     Al estar definida nuestra base de datos y aplicadas las migraciones de nuestro modelo de datos, tenemos la estructura de datos requerida para alojar nuestros registros.
     En este punto será importante contar con datos genéricos iniciales de la aplicación, como listas o parámetros que deben estar pre-cargados.
@@ -348,9 +359,9 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
         ]
         ```
     
-    Donde *"pk"* es el campo *id* generado de manera automática por Django y *fields* serán los otros atributos de nuestro modelo.
+    Donde *"pk"* es el campo *id* generado de manera automática por Django y *fields* serán los atributos de nuestro modelo.
 
-12. **Desacoplar Datos Sensibles**
+13. **Desacoplar Datos Sensibles**
 
     Ahora que ya estamos trabajando con una DB externa, debemos usar credenciales para conectarnos a esta nueva DB. Cualquier credencial o dato sensible no debería existir en código, incluyendo la *'SECRET_KEY'* de Django, por lo que debemos *DESACOPLAR* esos datos y ponerlos en un archivo de ambiente.
     - Instalamos la librería *decouple* para desacoplar los datos y posteriormente leerlos desde un archivo de ambiente. El siguiente comando será necesario para instalar la librería:
@@ -375,7 +386,7 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
     El método *config* traerá el valor de la variable almacenada en el archivo de ambiente que tenga el nombre que le pasamos al método como argumento.
     El mismo procedimiento debemos usar para procesar la información de la base de datos.
 
-13. **Instalación Django Rest Framework**
+14. **Instalación Django Rest Framework**
 
     Django Rest Framework es una librería que contiene muchas herramientas que usaremos en nuestro desarrollo django, como los serializadores.
     Para instalarlo ejecutaremos el siguiente comando mediante terminal:
@@ -392,7 +403,7 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
         ]
         ```
     
-14. **Incorporar Modelo de Datos al administrador de Django**
+15. **Incorporar Modelo de Datos al administrador de Django**
 
     En el archivo *mi_aplicacion/admin.py* debemos *REGISTRAR* nuestro modelo de datos, para que el admin de django pueda procesar los datos.
     Esto lo lograremos de la siguiente forma:
@@ -407,7 +418,7 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
         admin.site.register(MiClase2)
         ```
 
-15. **Creación de Serializadores**
+16. **Creación de Serializadores**
 
     La librería *rest_framework* que instalamos anteriormente, tiene la herramienta para serializar nuestro modelo de datos en formato *JSON*, que será necesario para trabajar los datos en la aplicación web, lo que lograremos siguiendo estos pasos:
     - Primero crearemos un archivo *serializer.py* en el directorio de nuestra aplicación.
@@ -419,23 +430,22 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
         ```
         from rest_framework import serializers
 
-        from .models import MiClase
-        from .models import MiClase2
+        from . import models
 
         class MiClaseSerializer(serializers.ModelSerializer):
             class Meta:
-                model = MiClase
+                model = models.MiClase
                 fields = ('__all__')
                 # __all__ serializa todas los atributos de la clase/modelo
 
         class MiClase2Serializer(serializers.ModelSerializer):
             class Meta:
-                model = MiClase2
+                model = models.MiClase2
                 fields = ('atributo_referenciado','atributo_2')
                 # De esta forma nosotros decidimos qué atributos de nuestra clase/modelo se serializarán
         ```
 
-16. **Creación de Vistas CBV**
+17. **Creación de Vistas CBV**
 
     CBV es el acrónimo de Class Based View o *Vista Basada en Clase*, es una colección de vistas basadas en un modelo de datos y que nos permiten hacer *CRUD* de los datos de ese modelo.
     Las vistas basadas en clase se crearán dentro de *mi_aplicacion/views.py*, nuestro archivo controlador, siguiendo las siguientes instrucciones:
@@ -446,19 +456,19 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
     El archivo debería quedar de la siguiente forma:
         ```
         from rest_framework import viewsets
-        from .models import MiClase, MiClase2
-        from .serializer import MiClaseSerializer, MiClase2Serializer
+        from . import models
+        from . import serializer
 
         class MiClaseViewSet(viewsets.ModelViewSet):
-            queryset = MiClase.objects.all()
-            serializer_class = MiClaseSerializer
+            queryset = models.MiClase.objects.all()
+            serializer_class = serializer.MiClaseSerializer
 
         class MiClase2ViewSet(viewsets.ModelViewSet):
-            queryset = MiClase2.objects.all()
-            serializer_class = MiClase2Serializer
+            queryset = models.MiClase2.objects.all()
+            serializer_class = serializer.MiClase2Serializer
         ```
     
-17. **Creación de Rutas**
+18. **Creación de Rutas**
 
     Los ViewSet que creamos en el paso anterior generan las vistas y métodos para hacer el *CRUD* de nuestros datos con métodos *HTTP/S* de tipo *POST*, *GET*, *PUT/PATCH* o *DELETE*, pero ahora necesitamos llegar hasta esos métodos o *END-POINTS*, por lo que debemos generar las rutas necesarias.
     - En el directorio de nuestra aplicación creamos un nuevo archivo *urls.py*, donde gestionaremos todas las rutas necesarias para nuestro modelo de datos completo.
@@ -482,7 +492,7 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
     - La *r* delante del string para generar la ruta es para evitar saltos de línea generados cuando se crea la ruta, es un tipo de dato *RAW* de Python.
     - El *urlpatterns* incluirá todas las rutas generadas dentro del enrutador y será necesario para enviarlas a *motor_django/urls.py*.
 
-18. **Incorporación de rutas a Django**
+19. **Incorporación de rutas a Django**
 
     - Para que las rutas generadas en la aplicación queden disponibles dentro de *django/urls.py*, debemos importarlas e incluirlas, de la siguiente forma:
         ```
@@ -499,25 +509,80 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
     
     - Con todo lo anterior, ya podemos iniciar nuestra aplicación, dirigirnos a: *http://127.0.0.1:8000/mi_aplicacion/* y comenzar a hacer *CRUD* de nuestros modelos.
 
-19. **Crear un Usuario Admin de Django**
+20. **Inicio de Sesión con Django**
 
-    El usuario *ADMIN* de Django es el que tendrá control de la aplicación y de las vistas *CRUD* de nuestro modelo de datos.
+    El sistema de autenticación incluido con Django se centra en el modelo User, lo que permite manejar cuentas de usuario, permisos, y tareas esenciales como login, logout, y control de contraseñas.
+
+    ### Extensión de User
+    Podemos crear nuestro propio modelo de usuario, pero si usamos el nativo podemos mantener todo el sistema de autenticación (como el inicio de sesión con login(), contraseñas, permisos) y, al mismo tiempo, agregar nuestros propios campos personalizados. La mejor práctica para lograrlo es extender el modelo de usuario utilizando AbstractUser, de la siguiente forma:
+    - Debemos definir el modelo personalizado en el archivo *mi_aplicacion/models.py*, y heredar de AbstractUser:
+        ```
+        from django.contrib.auth.models import AbstractUser
+        from django.db import models
+
+        class MiUsuario(AbstractUser):
+            # Agrega tus propios campos aquí
+            telefono = models.CharField(max_length=20, blank=True, null=True)
+            fecha_nacimiento = models.DateField(blank=True, null=True)
+            biografia = models.TextField(blank=True)
+
+            def __str__(self):
+                return self.username
+        ```
+
+    - Debes indicarle a Django que use tu nuevo modelo en lugar del modelo por defecto. Añade la siguiente línea en tu archivo *motor_django/settings.py*:
+        ```
+        AUTH_USER_MODEL = 'mi_aplicacion.MiUsuario'
+        ```
+
+    - Para que puedas gestionar tus usuarios personalizados y ver tus nuevos campos desde el panel de administración de Django, usa *UserAdmin* para registrar tu modelo en *mi_aplicacion/admin.py*:
+        ```
+        from django.contrib import admin
+        from django.contrib.auth.admin import UserAdmin
+        from .models import MiUsuario
+
+        # Esto asegura que los campos heredados y los nuevos se muestren correctamente
+        admin.site.register(MiUsuario, UserAdmin)
+        ```
+___
+**Crear un Usuario Admin de Django**
+
+    El usuario *ADMIN* de Django es el que tendrá control administrativo de la aplicación y también podrá hacer *CRUD* de nuestro modelo de datos.
     Para crearlo, ejecutaremos el siguiente comando mediante nuestro terminal:
     ```
     python manage.py createsuperuser
     ```
 
     Una vez que jecutamos el comando, este nos pedirá la información del usuario mediante el mismo terminal.
+___
+**Control de Dependecias** 
 
-___   
-> Para poder mantener las librerias actualizadas y estandarizadas para todo el equipo de desarrollo, crearemos un archivo de requerimientos con el siguiente comando:
+Para poder mantener las librerias actualizadas y estandarizadas para todo el equipo de desarrollo, crearemos un archivo de requerimientos con el siguiente comando:
 ```
 pip freeze > requirements.txt
 ```
 
-> Este archivo tendrá una lista de todas las librerías incluídas en nuestro *VENV*, la que podrá ser instalada en cualquier nuevo *VENV* ejecutando el siguiente comando:
+Este archivo tendrá una lista de todas las librerías incluídas en nuestro *VENV*, las que posteriormente podrán ser instaladas en cualquier nuevo *VENV* ejecutando el siguiente comando:
 ```
 pip install -r requirements.txt
 ```
 
 > Cada vez que agreguemos una nueva librería actualizaremos el archivo de requerimientos con el comando *FREEZE*.
+___
+**Control de Fechas Global**
+
+Si se necesita aplicar el mismo formato de fecha en toda la aplicación, debemos agregar un configuración global en *settings.py* como un diccionario llamado *REST_FRAMEWORK*.
+```
+REST_FRAMEWORK = {
+    'DATETIME_FORMAT': '%Y-%m-%d %H:%M:%S',
+    
+    # Formatos de entrada global aceptados por campos DateTimeFields
+    'DATETIME_INPUT_FORMATS': ['%d-%m-%Y %H:%M:%S', '%d-%m-%Y', 'iso-8601'],
+    
+    # Formato de salida global para campos DateFields
+    'DATE_FORMAT': '%d-%m-%Y',
+    
+    # Formatos de entrada global aceptados por campos DateFields
+    'DATE_INPUT_FORMATS': ['%d-%m-%Y'],
+}
+```

@@ -211,6 +211,8 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
     
     - Puedes poner tus archivos estáticos en un directorio dentro de tu aplicación o en la carpeta raíz del proyecto, creando un directorio *static* y dentro de ese directorio, generar los que sean necesarios para mantener el orden del sistema y separar distintos tipos de archivos.
 
+    - 
+
 10. **Manejo de Base de Datos**
 
     Una base de datos en entornos profesionales debe controlarse con usuarios específicos con permisos otorgados explícitamente. Esto lo lograremos ejecutando sentencias SQL directamente en el motor de DB, de la siguiente forma:

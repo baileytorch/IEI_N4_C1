@@ -12,17 +12,22 @@
     {% endblock %}
 
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/datatables.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'css/estilos.css' %}"> -->
+
     <link rel="shortcut icon" href="{% static 'images/logo.png' %}" type="image/x-icon">
     {% block estilos %}{% endblock %}
 
     <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
+    <script src="{% static 'js/jquery_v4.0.0.js' %}"></script>
+    <script src="{% static 'js/datatables.js' %}"></script>
     {% block script %}{% endblock %}
 </head>
 
 <body>
 
     <!-- Navegación -->
-    <nav>
+    <nav  class="navbar navbar-expand-lg bg-primary" data-bs-theme="light">
         <div class="logo">
             <span>📚</span> BiblioHUB
         </div>
@@ -39,6 +44,7 @@
     <!-- Contenido principal -->
     <main class="container">
         <div class="hero-content">
+            <br>
 
             {% block contenido %}
 

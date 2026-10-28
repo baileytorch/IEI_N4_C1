@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titulo %}
+<title>Listado Regiones</title>
+{% endblock %}
+
+{% block script %}
+<script src="{% static 'js/biblio_app/regiones/regiones.js' %}"></script>
+{% endblock %}
+
+{% block contenido %}
+
+<h3>Listado de Regiones</h3>
+
+<table id="regiones" class="display">
+    <thead>
+        <th>ID</th>
+        <th>Código Región</th>
+        <th>Nombre Región</th>
+    </thead>
+
+    <tbody>
+        {% for region in object_list %}
+            <tr>
+                <td>{{ region.id }}</td>
+                <td>{{ region.codigo }}</td>
+                <td>{{ region.region }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4">No se han encontrado datos.</td>
+            </tr>
+            {% endfor %}
+
+    </tbody>
+
+    <tfoot>
+        <th>ID</th>
+        <th>Código Región</th>
+        <th>Nombre Región</th>
+    </tfoot>
+</table>
+
+{% endblock %}

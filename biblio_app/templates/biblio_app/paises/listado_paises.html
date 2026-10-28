@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titulo %}
+<title>Listado Paises</title>
+{% endblock %}
+
+{% block script %}
+<script src="{% static 'js/biblio_app/paises/paises.js' %}"></script>
+{% endblock %}
+
+{% block contenido %}
+
+<h3>Listado de Paises</h3>
+
+<table id="paises" class="display dt-left">
+    <thead>
+        <th>ID</th>
+        <th>Nombre País</th>
+        <th>Nacionalidad</th>
+        <th>ISO 2</th>
+        <th>ISO 3</th>
+    </thead>
+
+    <tbody>
+        {% for pais in object_list %}
+            <tr>
+                <td>{{ pais.id }}</td>
+                <td>{{ pais.nombre }}</td>
+                <td>{{ pais.nacionalidad }}</td>
+                <td>{{ pais.iso_2 }}</td>
+                <td>{{ pais.iso_3 }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4">No se han encontrado datos.</td>
+            </tr>
+            {% endfor %}
+
+    </tbody>
+
+    <tfoot>
+        <th>ID</th>
+        <th>Nombre País</th>
+        <th>Nacionalidad</th>
+        <th>ISO 2</th>
+        <th>ISO 3</th>
+    </tfoot>
+</table>
+
+{% endblock %}

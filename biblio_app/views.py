@@ -1,9 +1,10 @@
 from django.shortcuts import render
+from django.views.generic import ListView
 from rest_framework import viewsets
 
-from .models import Pais, Region, Provincia, Comuna
+from . import models as mod
 
-from .serializer import PaisSerializer, RegionSerializer, ProvinciaSerializer, ComunaSerializer
+from . import serializer as ser
 
 # Create your views here.
 # inicio es una vista basada en función FBV
@@ -12,17 +13,25 @@ def inicio(request):
 
 # Creación de vistas basadas en clase
 class PaisViewSet(viewsets.ModelViewSet):
-    queryset = Pais.objects.all()
-    serializer_class = PaisSerializer
+    queryset = mod.Pais.objects.all()
+    serializer_class = ser.PaisSerializer
+
+class PaisListView(ListView):
+    model = mod.Pais
+    template_name = 'biblio_app/paises/listado_paises.html'
 
 class RegionViewSet(viewsets.ModelViewSet):
-    queryset = Region.objects.all()
-    serializer_class = RegionSerializer
+    queryset = mod.Region.objects.all()
+    serializer_class = ser.RegionSerializer
+
+class RegionListView(ListView):
+    model = mod.Region
+    template_name = 'biblio_app/regiones/listado_regiones.html'
 
 class ProvinciaViewSet(viewsets.ModelViewSet):
-    queryset = Provincia.objects.all()
-    serializer_class = ProvinciaSerializer
+    queryset = mod.Provincia.objects.all()
+    serializer_class = ser.ProvinciaSerializer
 
 class ComunaViewSet(viewsets.ModelViewSet):
-    queryset = Comuna.objects.all()
-    serializer_class = ComunaSerializer
+    queryset = mod.Comuna.objects.all()
+    serializer_class = ser.ComunaSerializer

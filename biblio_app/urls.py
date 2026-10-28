@@ -11,4 +11,6 @@ enrutador.register(r'comunas', views.ComunaViewSet)
 
 urlpatterns = [
     path('',include(enrutador.urls)),
+    path('grupo_region/listado_regiones', views.RegionListView.as_view(), name='listado_regiones'),
+    path('grupo_pais/listado_paises', views.PaisListView.as_view(), name='listado_paises')
 ]

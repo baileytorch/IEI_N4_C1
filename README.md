@@ -197,21 +197,60 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
 
         - Para que se muestre una página de error creada por nosotros, dentro del directorio *templates* creado anteriormente, crearemos un archivo *html* de nombre *404*. Django buscará en este directorio ese archivo y lo cargará al no encontrar un recurso.
 
-9 **Manejo de Archivos Estáticos**
+9. **Manejo de Archivos Estáticos**
+
     Para cargar y usar tus propios archivos estáticos (CSS, JavaScript, imágenes) en Django, sigue estos pasos básicos.
     - Asegúrate de que en tu archivo *motor_django/settings.py* esté configurado el STATIC_URL y la ruta donde Django buscará los archivos:
         ```
         STATIC_URL = 'static/'
 
-        # Opcional: Directorios globales adicionales para archivos estáticos
         STATICFILES_DIRS = [
             BASE_DIR / "static",
         ]
         ```
-    
-    - Puedes poner tus archivos estáticos en un directorio dentro de tu aplicación o en la carpeta raíz del proyecto, creando un directorio *static* y dentro de ese directorio, generar los que sean necesarios para mantener el orden del sistema y separar distintos tipos de archivos.
 
-    - 
+    - Puedes poner tus archivos estáticos en un directorio dentro de tu aplicación o en la carpeta raíz del proyecto, creando un directorio *static* y dentro de ese directorio, generar las subcarpetas que sean necesarias para mantener el orden del sistema y separar distintos tipos de archivos, teniendo idealmente:
+        - css: Para almacenar plantillas de estilo en cascada.
+        - js: Para almacenar scripts de JavaScript.
+        - images: Para almacenar imágenes usadas dentro de la aplicación.
+    
+    - Es significativo podeer trabajar con nuestros archivos estáticos, definir nuestros estilos css, usar nuestras propias imágenes, etc. Pero esto alcanza su verdadero potencial cuando logramos incorporar en nuestra aplicación herramientas/frameworks que nos permiten agregar funcionalidad y potenciar nuestro código, como *BootStrap*, *jQuery*, *jQuery Datatables*, etc. Para lograrlo, seguiremos los siguientes pasos:
+        - Buscar el framework a implementar, para descargar sus archivos, generalmente un css y un js.
+        - Descarga los archivos necesarios y ponlos en los directorios de estáticos correspondientes.
+        - Impleméntalos en tus vistas, idealmente en la plantilla base, para tenerlos disponibles en todas las otras vistas, usando las siguientes etiquetas:
+            - ```{% load static %}```: Esta etiqueta permite cargar los archivos estáticos en la vista, debe ejecutarse antes que cualquier otra instrucción.
+            - ```{% static 'images/logo.png' %}```: URL al un archvo estático específico. Las usaremos en etiquetas *Link* o *Script* con el atributo *SRC*, como por ejemplo: 
+                - ```<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">```
+                - ```<link rel="shortcut icon" href="{% static 'images/logo.png' %}" type="image/x-icon">```
+                - ```<script src="{% static 'js/bootstrap.bundle.js' %}"></script>```
+            
+            Todo esto finalmente se incorpora en la vista de la siguiente forma:
+            ```
+            {% load static %}
+
+            <!DOCTYPE html>
+            <html lang="es">
+
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+                {% block titulo %}
+                <title>Plantilla</title>
+                {% endblock %}
+
+                <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+                <link rel="stylesheet" href="{% static 'css/datatables.css' %}">
+
+                <link rel="shortcut icon" href="{% static 'images/logo.png' %}" type="image/x-icon">
+                {% block estilos %}{% endblock %}
+
+                <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
+                <script src="{% static 'js/jquery_v4.0.0.js' %}"></script>
+                <script src="{% static 'js/datatables.js' %}"></script>
+                {% block script %}{% endblock %}
+            </head>
+            ```
 
 10. **Manejo de Base de Datos**
 

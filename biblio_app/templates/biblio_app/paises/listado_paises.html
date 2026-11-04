@@ -56,40 +56,45 @@
 
         {% for pais in object_list %}
 
-        <div class="card h-100">
-            <div class="card-header">
-                {{ pais.id }} {{ pais.nombre }}
-            </div>
-            <div class="card-body">
-                <h5 class="card-title">{{ pais.nombre }} {{ pais.nacionalidad }}</h5>
-                <p class="card-text">
-                <ul>
-                    <li>Id: {{ pais.id }}</li>
-                    <li>Nombre: {{ pais.nombre }}</li>
-                    <li>Nacionalidad: {{ pais.nacionalidad }}</li>
-                    <li>ISO 2: {{ pais.iso_2 }}</li>
-                    <li>ISO 3: {{ pais.iso_3 }}</li>
-                </ul>
-                </p>
-            </div>
-            <div class="card-footer text-body-secondary">
-                {{ pais.iso_2 }} {{ pais.iso_3 }}
+        <div class="col">
+            <div class="card h-100">
+                <div class="card-header">
+                    {{ pais.id }} {{ pais.nombre }}
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ pais.nombre }} {{ pais.nacionalidad }}</h5>
+                    <p class="card-text">
+                    <ul>
+                        <li>Id: {{ pais.id }}</li>
+                        <li>Nombre: {{ pais.nombre }}</li>
+                        <li>Nacionalidad: {{ pais.nacionalidad }}</li>
+                        <li>ISO 2: {{ pais.iso_2 }}</li>
+                        <li>ISO 3: {{ pais.iso_3 }}</li>
+                    </ul>
+                    </p>
+                </div>
+                <div class="card-footer text-body-secondary">
+                    {{ pais.iso_2 }} {{ pais.iso_3 }}
+                </div>
             </div>
         </div>
 
         {% empty %}
-        <div class="card text-center">
-            <div class="card-header">
-                Paises
-            </div>
-            <div class="card-body">
-                <h5 class="card-title">No hay Datos</h5>
-                <p class="card-text">No se han encontrado datos de paises.</p>
-            </div>
-            <div class="card-footer text-body-secondary">
-                Paises
+        <div class="col">
+            <div class="card text-center">
+                <div class="card-header">
+                    Paises
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">No hay Datos</h5>
+                    <p class="card-text">No se han encontrado datos de paises.</p>
+                </div>
+                <div class="card-footer text-body-secondary">
+                    Paises
+                </div>
             </div>
         </div>
+
         {% endfor %}
 
     </div>

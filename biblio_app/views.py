@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView
+from django.views.generic import ListView, CreateView
 from rest_framework import viewsets
 
 from . import models as mod
@@ -35,3 +35,12 @@ class ProvinciaViewSet(viewsets.ModelViewSet):
 class ComunaViewSet(viewsets.ModelViewSet):
     queryset = mod.Comuna.objects.all()
     serializer_class = ser.ComunaSerializer
+
+class BibliotecaListView(ListView):
+    model = mod.Biblioteca
+    template_name = 'biblio_app/biblioteca/listado_bibliotecas.html'
+
+class BibliotecaCreateView(CreateView):
+    model = mod.Biblioteca
+    fields = ['nombre', 'web', 'correo', 'telefono']
+    template_name = 'biblio_app/biblioteca/crear_biblioteca.html'

@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titulo %}
+<title>Listado Bibliotecas</title>
+{% endblock %}
+
+{% block script %}
+<script src="{% static 'js/biblio_app/regiones/regiones.js' %}"></script>
+{% endblock %}
+
+{% block contenido %}
+
+<h3>Listado de Bibliotecas</h3>
+<br>
+<a href=""  type="button" class="btn btn-primary">Agregar Biblioteca</a>
+<br>
+<br>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+
+    {% for biblioteca in object_list %}
+
+    <div class="col">
+        <div class="card h-100">
+            <div class="card-header">
+                {{ biblioteca.nombre }}
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{ biblioteca.nombre }} {{ biblioteca.nacionalidad }}</h5>
+                <p class="card-text">
+                <ul>
+                    <li>Id: {{ biblioteca.id }}</li>
+                    <li>Nombre: {{ biblioteca.nombre }}</li>
+                    <li>Correo Contacto: {{ biblioteca.correo }}</li>
+                    <li>Teléfono Contacto: {{ biblioteca.telefono }}</li>
+                    <li>ISO 3: {{ biblioteca.iso_3 }}</li>
+                </ul>
+                </p>
+            </div>
+            <div class="card-footer text-body-secondary">
+                {{ biblioteca.web }}
+            </div>
+        </div>
+    </div>
+
+    {% empty %}
+    <div class="col">
+        <div class="card">
+            <div class="card-header">
+                Biblioteca
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">No hay Datos</h5>
+                <p class="card-text">No se han encontrado datos de bibliotecas.</p>
+            </div>
+            <div class="card-footer text-body-secondary">
+                Paises
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+
+{% endblock %}

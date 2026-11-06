@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titulo %}
+<title>Listado Autores</title>
+{% endblock %}
+
+{% block contenido %}
+
+<h3>Listado de Autores</h3>
+<br>
+<a href="{% url 'crear_autor' %}"  type="button" class="btn btn-primary">Agregar Autor</a>
+<br>
+<br>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+
+    {% for autor in object_list %}
+
+    <div class="col">
+        <div class="card h-100">
+            <div class="card-header">
+                {{ autor.nombre }}
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{ autor.nombre }} {{ autor.pseudonimo }}</h5>
+                <p class="card-text">
+                <ul>
+                    <li>Id: {{ autor.id }}</li>
+                    <li>Nombre: {{ autor.nombre }}</li>
+                    <li>Pseudónimo: {{ autor.pseudonimo }}</li>
+                    <li>Nacionalidad: {{ autor.nacionalidad.nombre }}</li>
+                    <li>Fecha Nacimiento: {{ autor.fecha_nacimiento }}</li>
+                    <li>Fecha Nacimiento: {{ autor.fecha_defuncion }}</li>
+                </ul>
+                </p>
+            </div>
+            <div class="card-footer text-body-secondary">
+                {{ autor.nombre }}
+            </div>
+        </div>
+    </div>
+
+    {% empty %}
+    <div class="col">
+        <div class="card">
+            <div class="card-header">
+                Biblioteca
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">No hay Datos</h5>
+                <p class="card-text">No se han encontrado datos de bibliotecas.</p>
+            </div>
+            <div class="card-footer text-body-secondary">
+                Paises
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+
+{% endblock %}

@@ -44,3 +44,12 @@ class BibliotecaCreateView(CreateView):
     model = mod.Biblioteca
     fields = ['nombre', 'web', 'correo', 'telefono']
     template_name = 'biblio_app/biblioteca/crear_biblioteca.html'
+
+class AutorListView(ListView):
+    model = mod.Autor
+    template_name = 'biblio_app/autor/listado_autores.html'
+
+class AutorCreateView(CreateView):
+    model = mod.Autor
+    fields = ['nombre', 'pseudonimo', 'nacionalidad', 'fecha_nacimiento', 'fecha_defuncion', 'biografia']
+    template_name = 'biblio_app/autor/crear_autor.html'

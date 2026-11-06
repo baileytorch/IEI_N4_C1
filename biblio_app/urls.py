@@ -14,5 +14,7 @@ urlpatterns = [
     path('grupo_region/listado_regiones', views.RegionListView.as_view(), name='listado_regiones'),
     path('grupo_pais/listado_paises', views.PaisListView.as_view(), name='listado_paises'),
     path('grupo_biblioteca/listado_bibliotecas', views.BibliotecaListView.as_view(), name='listado_bibliotecas'),
-    path('grupo_biblioteca/crear_biblioteca', views.BibliotecaCreateView.as_view(), name='crear_biblioteca')
+    path('grupo_biblioteca/crear_biblioteca', views.BibliotecaCreateView.as_view(), name='crear_biblioteca'),
+    path('grupo_autor/listado_autores', views.AutorListView.as_view(), name='listado_autores'),
+    path('grupo_autor/crear_autor', views.AutorCreateView.as_view(), name='crear_autor')
 ]

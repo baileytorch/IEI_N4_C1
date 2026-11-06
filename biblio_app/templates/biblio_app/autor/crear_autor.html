@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titulo %}
+<title>Crear Autor</title>
+{% endblock %}
+
+{% block contenido %}
+
+<h3>Agregar Autor</h3>
+<br>
+
+<form action="" method="post">
+    <div class="row">
+        <div class="col">
+            <label for="nombre" class="form-label">Nombre:</label>
+
+        </div>
+
+        <div class="col">
+            <label for="web" class="form-label">Pseudónimo:</label>
+
+        </div>
+    </div>
+    <br>
+    
+    <div class="row">
+        <div class="col">
+            <label for="correo" class="form-label">Nacionalidad:</label>
+
+        </div>
+
+        <div class="col">
+            <label for="telefono" class="form-label">Fecha Nacimiento:</label>
+
+        </div>
+
+        <div class="col">
+            <label for="telefono" class="form-label">Fecha Defunción:</label>
+
+        </div>
+    </div>
+    <br>
+    
+    <div class="row">
+        <div class="col">
+            <label for="correo" class="form-label">Biografía:</label>
+
+        </div>
+    </div>
+</form>
+
+{% endblock %}

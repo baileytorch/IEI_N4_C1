@@ -3,8 +3,8 @@ from django.views.generic import ListView, CreateView
 from rest_framework import viewsets
 
 from . import models as mod
-
 from . import serializer as ser
+from . import forms
 
 # Create your views here.
 # inicio es una vista basada en función FBV
@@ -51,5 +51,5 @@ class AutorListView(ListView):
 
 class AutorCreateView(CreateView):
     model = mod.Autor
-    fields = ['nombre', 'pseudonimo', 'nacionalidad', 'fecha_nacimiento', 'fecha_defuncion', 'biografia']
+    form_class = forms.AutorForm
     template_name = 'biblio_app/autor/crear_autor.html'

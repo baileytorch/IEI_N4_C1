@@ -13,39 +13,39 @@
 <form action="" method="post">
     <div class="row">
         <div class="col">
-            <label for="nombre" class="form-label">Nombre:</label>
-
+            <label for="id_nombre" class="form-label">Nombre:</label>
+            {{ form.nombre }}
         </div>
 
         <div class="col">
-            <label for="web" class="form-label">Pseudónimo:</label>
-
-        </div>
-    </div>
-    <br>
-    
-    <div class="row">
-        <div class="col">
-            <label for="correo" class="form-label">Nacionalidad:</label>
-
-        </div>
-
-        <div class="col">
-            <label for="telefono" class="form-label">Fecha Nacimiento:</label>
-
-        </div>
-
-        <div class="col">
-            <label for="telefono" class="form-label">Fecha Defunción:</label>
-
+            <label for="id_pseudonimo" class="form-label">Pseudónimo:</label>
+            {{ form.pseudonimo }}
         </div>
     </div>
     <br>
     
     <div class="row">
         <div class="col">
-            <label for="correo" class="form-label">Biografía:</label>
+            <label for="id_nacionalidad" class="form-label">Nacionalidad:</label>
+            {{ form.nacionalidad }}
+        </div>
 
+        <div class="col">
+            <label for="id_fecha_nacimiento" class="form-label">Fecha Nacimiento:</label>
+            {{ form.fecha_nacimiento }}
+        </div>
+
+        <div class="col">
+            <label for="id_fecha_defuncion" class="form-label">Fecha Defunción:</label>
+            {{ form.fecha_defuncion }}
+        </div>
+    </div>
+    <br>
+    
+    <div class="row">
+        <div class="col">
+            <label for="id_biografia" class="form-label">Biografía:</label>
+            {{ form.biografia }}
         </div>
     </div>
 </form>

@@ -20,6 +20,6 @@ from biblio_app import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.inicio),
+    path('',views.inicio,name='inicio'),
     path('biblio_app/', include('biblio_app.urls'))
 ]

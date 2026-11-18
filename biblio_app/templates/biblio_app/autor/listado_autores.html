@@ -22,18 +22,23 @@
             <div class="card-header">
                 {{ autor.nombre }}
             </div>
-            <div class="card-body">
-                <h5 class="card-title">{{ autor.nombre }} {{ autor.pseudonimo }}</h5>
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title">{{ autor.nombre }}</h5>
+                <p class="card-text">{% if autor.pseudonimo %}{{autor.pseudonimo}}{% endif %}</p>
                 <p class="card-text">
                 <ul>
-                    <li>Id: {{ autor.id }}</li>
-                    <li>Nombre: {{ autor.nombre }}</li>
-                    <li>Pseudónimo: {{ autor.pseudonimo }}</li>
-                    <li>Nacionalidad: {{ autor.nacionalidad.nombre }}</li>
-                    <li>Fecha Nacimiento: {{ autor.fecha_nacimiento }}</li>
-                    <li>Fecha Nacimiento: {{ autor.fecha_defuncion }}</li>
+                    <li>Nombre: {% if autor.nombre %}{{ autor.nombre }}{% else %}--{% endif %}</li>
+                    <li>Pseudónimo: {% if autor.pseudonimo %}{{ autor.pseudonimo }}{% else %}--{% endif %}</li>
+                    <li>Nacionalidad: {% if autor.nacionalidad.nombre %}{{ autor.nacionalidad.nombre }}{% else %}--{% endif %}</li>
+                    <li>Fecha Nacimiento: {% if autor.fecha_nacimiento %}{{ autor.fecha_nacimiento }}{% else %}--{% endif %}</li>
+                    <li>Fecha Defunción: {% if autor.fecha_defuncion %}{{autor.fecha_defuncion}}{% else %}--{% endif %}</li>
                 </ul>
                 </p>
+                <div class="mt-auto d-flex gap-2">
+                    <a href="{% url 'modificar_autor' autor.id %}" class="btn btn-secondary w-100">Editar</a>
+                    <a href="{% url 'detalle_autor' autor.id %}" class="btn btn-info w-100">Detalle</a>
+                    <a href="{% url 'deshabilitar_autor' autor.id %}" class="btn btn-danger w-100">Deshabilitar</a>
+                </div>
             </div>
             <div class="card-footer text-body-secondary">
                 {{ autor.nombre }}

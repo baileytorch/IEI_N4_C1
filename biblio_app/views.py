@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, UpdateView, DetailView
 from rest_framework import viewsets
+from django.urls import reverse_lazy
 
 from . import models as mod
 from . import serializer as ser
@@ -52,4 +53,20 @@ class AutorListView(ListView):
 class AutorCreateView(CreateView):
     model = mod.Autor
     form_class = forms.AutorForm
+    success_url = 'listado_autores'
     template_name = 'biblio_app/autor/crear_autor.html'
+
+class EditarAutor(UpdateView):
+    model = mod.Autor
+    form_class = forms.AutorForm
+    success_url = reverse_lazy('listado_autores')
+    template_name = 'biblio_app/autor/crear_autor.html'
+
+class DetalleAutor(DetailView):
+    model = mod.Autor
+    template_name = 'biblio_app/autor/detalle_autor.html'
+
+class DeshabilitarAutor(UpdateView):
+    model = mod.Autor
+    form_class = forms.DeshabilitarAutorForm
+    success_url = reverse_lazy('listado_autores')

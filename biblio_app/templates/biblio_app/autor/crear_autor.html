@@ -11,6 +11,9 @@
 <br>
 
 <form action="" method="post">
+    {% csrf_token %}
+
+    <!-- {{ form.as_p }} -->
     <div class="row">
         <div class="col">
             <label for="id_nombre" class="form-label">Nombre:</label>
@@ -48,6 +51,9 @@
             {{ form.biografia }}
         </div>
     </div>
+    <br>
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
 </form>
 
 {% endblock %}

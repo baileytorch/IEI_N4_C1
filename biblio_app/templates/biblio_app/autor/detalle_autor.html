@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titulo %}
+<title>Detalle Autores</title>
+{% endblock %}
+
+{% block contenido %}
+
+<h3>Detalle de Autor</h3>
+<br>
+
+<div class="row">
+    <div class="col">
+        <div class="card h-100">
+            <div class="card-header">
+                {{ autor.nombre }}
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{ autor.nombre }}</h5>
+                <p class="card-text">{% if autor.pseudonimo %}{{autor.pseudonimo}}{% endif %}</p>
+                
+                <h6 class="card-title">Nombre:</h6>
+                <p class="card-text">{% if autor.nombre %}{{ autor.nombre }}{% else %}--{% endif %}</p>
+                
+                <h6 class="card-title">Pseudónimo:</h6>
+                <p class="card-text">{% if autor.pseudonimo %}{{ autor.pseudonimo }}{% else %}--{% endif %}</p>
+                
+                <h6 class="card-title">Nacionalidad:</h6>
+                <p class="card-text">{% if autor.nacionalidad.nombre %}{{ autor.nacionalidad.nombre }}{% else %}--{% endif %}</p>
+                
+                <h6 class="card-title">Fecha Nacimiento:</h6>
+                <p class="card-text">{% if autor.fecha_nacimiento %}{{ autor.fecha_nacimiento }}{% else %}--{% endif %}</p>
+                
+                <h6 class="card-title">Fecha Defunción:</h6>
+                <p class="card-text">{% if autor.fecha_defuncion %}{{autor.fecha_defuncion}}{% else %}--{% endif %}</p>
+            </div>
+            <div class="card-footer text-body-secondary">
+                {{ autor.nombre }}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -34,7 +34,7 @@ class Region(models.Model):
 class Provincia(models.Model):
     codigo = models.CharField(str_codigo,max_length=3,null=False,blank=False)
     provincia = models.CharField("Provincia",max_length=50,null=False,blank=False)
-    region = models.ForeignKey(Region,on_delete=models.CASCADE,null=False,blank=False)
+    region = models.ForeignKey(Region,on_delete=models.PROTECT,null=False,blank=False)
     habilitado = models.BooleanField(int_habilitado,default=True,null=False,blank=False)
     class Meta:
         db_table_comment = "Provincias de Chile, data de SUBDERE. Pertenece a una región específica."
@@ -42,13 +42,13 @@ class Provincia(models.Model):
 class Comuna(models.Model):
     codigo = models.CharField(str_codigo,max_length=5,null=False,blank=False)
     comuna = models.CharField("Comuna",max_length=60,null=False,blank=False)
-    provincia = models.ForeignKey(Provincia,on_delete=models.CASCADE,null=False,blank=False)
+    provincia = models.ForeignKey(Provincia,on_delete=models.PROTECT,null=False,blank=False)
     habilitado = models.BooleanField(int_habilitado,default=True,null=False,blank=False)
     class Meta:
         db_table_comment = "Comunas de Chile, data de SUBDERE. Pertenece a una provincia específica."
 
 class Direccion(models.Model):
-    comuna = models.ForeignKey(Comuna,on_delete=models.CASCADE,null=False,blank=False)
+    comuna = models.ForeignKey(Comuna,on_delete=models.PROTECT,null=False,blank=False)
     calle = models.CharField("Calle",max_length=100,null=True,blank=True)
     numero = models.CharField("Número",max_length=10,null=True,blank=True)
     departamento = models.CharField("Dpto/Oficina",max_length=10,null=True,blank=True)
@@ -63,7 +63,7 @@ class Biblioteca(models.Model):
     web = models.URLField(str_www,null=True,blank=True)
     correo = models.EmailField(str_email,null=True,blank=True)
     telefono = models.CharField(str_telefono,max_length=15,null=True,blank=True)
-    direccion = models.ForeignKey(Direccion,on_delete=models.CASCADE,null=True,blank=True)
+    direccion = models.ForeignKey(Direccion,on_delete=models.PROTECT,null=True,blank=True)
     habilitado = models.BooleanField(int_habilitado,default=True,null=False,blank=False)
     created_at = models.DateTimeField(str_fecha_creacion,auto_now_add=True)
     updated_at = models.DateTimeField(str_fecha_actualizacion,auto_now=True)
@@ -73,7 +73,7 @@ class Biblioteca(models.Model):
 class Autor(models.Model):
     nombre = models.CharField(str_nombre,max_length=100,null=False,blank=False)
     pseudonimo = models.CharField("Pseudónimo",max_length=50,null=True,blank=True)
-    nacionalidad = models.ForeignKey(Pais,on_delete=models.CASCADE,null=True,blank=True)
+    nacionalidad = models.ForeignKey(Pais,on_delete=models.PROTECT,null=True,blank=True)
     fecha_nacimiento = models.DateField(str_fecha_nac,null=True,blank=True)
     fecha_defuncion = models.DateField("Fecha Defunción",null=True,blank=True)
     biografia = models.TextField("Biografía",null=True,blank=True)
@@ -95,7 +95,7 @@ class Genero(models.Model):
 class SubGenero(models.Model):
     subgenero = models.CharField("Sub-Género Literario",max_length=30,null=False,blank=False)
     descripcion = models.CharField(str_descripcion,max_length=255,null=True,blank=True)
-    genero = models.ForeignKey(Genero,on_delete=models.CASCADE,null=False,blank=False)
+    genero = models.ForeignKey(Genero,on_delete=models.PROTECT,null=False,blank=False)
     habilitado = models.BooleanField(int_habilitado,default=True,null=False,blank=False)
     created_at = models.DateTimeField(str_fecha_creacion,auto_now_add=True)
     updated_at = models.DateTimeField(str_fecha_actualizacion,auto_now=True)
@@ -107,7 +107,7 @@ class Editorial(models.Model):
     web = models.URLField(str_www,null=True,blank=True)
     correo = models.EmailField(str_email,null=True,blank=True)
     telefono = models.CharField(str_telefono,max_length=15,null=True,blank=True)
-    direccion = models.ForeignKey(Direccion,on_delete=models.CASCADE,null=True,blank=True)
+    direccion = models.ForeignKey(Direccion,on_delete=models.PROTECT,null=True,blank=True)
     habilitado = models.BooleanField(int_habilitado,default=True,null=False,blank=False)
     created_at = models.DateTimeField(str_fecha_creacion,auto_now_add=True)
     updated_at = models.DateTimeField(str_fecha_actualizacion,auto_now=True)
@@ -124,8 +124,8 @@ class Idioma(models.Model):
 
 class Edicion(models.Model):
     fecha_edicion = models.DateField("Fecha Edición",null=False,blank=False)
-    editorial = models.ForeignKey(Editorial,on_delete=models.CASCADE,null=False,blank=False)
-    idioma = models.ForeignKey(Idioma,on_delete=models.CASCADE,null=False,blank=False)
+    editorial = models.ForeignKey(Editorial,on_delete=models.PROTECT,null=False,blank=False)
+    idioma = models.ForeignKey(Idioma,on_delete=models.PROTECT,null=False,blank=False)
     habilitado = models.BooleanField(int_habilitado,default=True,null=False,blank=False)
     created_at = models.DateTimeField(str_fecha_creacion,auto_now_add=True)
     updated_at = models.DateTimeField(str_fecha_actualizacion,auto_now=True)
@@ -135,10 +135,10 @@ class Edicion(models.Model):
 class Libro(models.Model):
     titulo = models.CharField("Título",max_length=150,null=False,blank=False)
     paginas = models.IntegerField("Cantidad Páginas",null=False,blank=False)
-    autor = models.ForeignKey(Autor,on_delete=models.CASCADE,null=False,blank=False)
-    subgenero = models.ForeignKey(SubGenero,on_delete=models.CASCADE,null=False,blank=False)
-    edicion = models.ForeignKey(Edicion,on_delete=models.CASCADE,null=False,blank=False)
-    biblioteca = models.ForeignKey(Biblioteca,on_delete=models.CASCADE,null=False,blank=False)
+    autor = models.ForeignKey(Autor,on_delete=models.PROTECT,null=False,blank=False)
+    subgenero = models.ForeignKey(SubGenero,on_delete=models.PROTECT,null=False,blank=False)
+    edicion = models.ForeignKey(Edicion,on_delete=models.PROTECT,null=False,blank=False)
+    biblioteca = models.ForeignKey(Biblioteca,on_delete=models.PROTECT,null=False,blank=False)
     habilitado = models.BooleanField(int_habilitado,default=True,null=False,blank=False)
     created_at = models.DateTimeField(str_fecha_creacion,auto_now_add=True)
     updated_at = models.DateTimeField(str_fecha_actualizacion,auto_now=True)
@@ -165,9 +165,9 @@ class Ubicacion(models.Model):
         db_table_comment = "Data de ubicación física de ejemplares en la biblioteca."
 
 class Inventario(models.Model):
-    libro = models.ForeignKey(Libro,on_delete=models.CASCADE,null=False,blank=False)
-    estado = models.ForeignKey(Estado,on_delete=models.CASCADE,null=False,blank=False)
-    ubicacion = models.ForeignKey(Ubicacion,on_delete=models.CASCADE,null=False,blank=False)
+    libro = models.ForeignKey(Libro,on_delete=models.PROTECT,null=False,blank=False)
+    estado = models.ForeignKey(Estado,on_delete=models.PROTECT,null=False,blank=False)
+    ubicacion = models.ForeignKey(Ubicacion,on_delete=models.PROTECT,null=False,blank=False)
     gtin = models.CharField("Código Barras",max_length=50,null=False,blank=False)
     habilitado = models.BooleanField(int_habilitado,default=True,null=False,blank=False)
     created_at = models.DateTimeField(str_fecha_creacion,auto_now_add=True)
@@ -180,11 +180,11 @@ class Usuario(models.Model):
     rut = models.CharField("RUT",max_length=12,null=False,blank=False)
     correo = models.EmailField(str_email,null=True,blank=True)
     telefono = models.CharField(str_telefono,max_length=15,null=True,blank=True)
-    nacionalidad = models.ForeignKey(Pais,on_delete=models.CASCADE,null=True,blank=True)
+    nacionalidad = models.ForeignKey(Pais,on_delete=models.PROTECT,null=True,blank=True)
     fecha_nacimiento = models.DateField(str_fecha_nac,null=False,blank=False)
     contrasenia = models.CharField(max_length=128,null=True,blank=True)
-    direccion = models.ForeignKey(Direccion,on_delete=models.CASCADE,null=True,blank=True)
-    biblioteca = models.ForeignKey(Biblioteca,on_delete=models.CASCADE,null=False,blank=False)
+    direccion = models.ForeignKey(Direccion,on_delete=models.PROTECT,null=True,blank=True)
+    biblioteca = models.ForeignKey(Biblioteca,on_delete=models.PROTECT,null=False,blank=False)
     habilitado = models.BooleanField(int_habilitado,default=True,null=False,blank=False)
     created_at = models.DateTimeField(str_fecha_creacion,auto_now_add=True)
     updated_at = models.DateTimeField(str_fecha_actualizacion,auto_now=True)
@@ -192,8 +192,8 @@ class Usuario(models.Model):
         db_table_comment = "Registro de usuarios de biblioteca."
 
 class Prestamo(models.Model):
-    libro = models.ForeignKey(Inventario,on_delete=models.CASCADE,null=False,blank=False)
-    lector = models.ForeignKey(Usuario,on_delete=models.CASCADE,null=False,blank=False)
+    libro = models.ForeignKey(Inventario,on_delete=models.PROTECT,null=False,blank=False)
+    lector = models.ForeignKey(Usuario,on_delete=models.PROTECT,null=False,blank=False)
     fecha_prestamo = models.DateTimeField("Fecha Préstamo",auto_now_add=True)
     fecha_devolucion = models.DateTimeField("Fecha Devolución",null=False,blank=False)
     fecha_retorno = models.DateTimeField("Fecha Retorno",null=True,blank=True)

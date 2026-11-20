@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titulo %}
+<title>Eliminar Autor</title>
+{% endblock %}
+
+{% block contenido %}
+
+<h3>Eliminar Autor</h3>
+<br>
+
+<div class="row">
+    <div class="col">
+        <div class="card h-100">
+            <div class="card-header">
+                {{ autor.nombre }}
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">¿Esta seguro de eliminar el autor: {{ autor.nombre }}?</h5>
+
+                <form method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">SI, eliminar el autor</button>
+                    <a href="{% url 'listado_autores' %}" class="btn btn-secondary">Cancelar</a>
+                </form>
+            </div>
+            <div class="card-footer text-body-secondary">
+                {{ autor.nombre }}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

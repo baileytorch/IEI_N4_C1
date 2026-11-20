@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView, CreateView, UpdateView, DetailView
+from django.views.generic import ListView, CreateView, UpdateView, DetailView, DeleteView
 from rest_framework import viewsets
 from django.urls import reverse_lazy
 
@@ -70,3 +70,8 @@ class DeshabilitarAutor(UpdateView):
     model = mod.Autor
     form_class = forms.DeshabilitarAutorForm
     success_url = reverse_lazy('listado_autores')
+    
+class EliminarAutor(DeleteView):
+    model = mod.Autor
+    success_url = reverse_lazy('listado_autores')
+    template_name = 'biblio_app/autor/eliminar_autor.html'

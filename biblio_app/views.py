@@ -5,7 +5,7 @@ from django.urls import reverse_lazy
 
 from . import models as mod
 from . import serializer as ser
-from . import forms
+from . import forms as fo
 
 # Create your views here.
 # inicio es una vista basada en función FBV
@@ -28,6 +28,12 @@ class RegionViewSet(viewsets.ModelViewSet):
 class RegionListView(ListView):
     model = mod.Region
     template_name = 'biblio_app/regiones/listado_regiones.html'
+
+class CrearRegion(CreateView):
+    model = mod.Region
+    form_class = fo.FormularioRegion
+    success_url = 'listado_regiones'
+    template_name = 'biblio_app/regiones/crear_region.html'
 
 class ProvinciaViewSet(viewsets.ModelViewSet):
     queryset = mod.Provincia.objects.all()
@@ -52,13 +58,13 @@ class AutorListView(ListView):
 
 class AutorCreateView(CreateView):
     model = mod.Autor
-    form_class = forms.AutorForm
+    form_class = fo.AutorForm
     success_url = 'listado_autores'
     template_name = 'biblio_app/autor/crear_autor.html'
 
 class EditarAutor(UpdateView):
     model = mod.Autor
-    form_class = forms.AutorForm
+    form_class = fo.AutorForm
     success_url = reverse_lazy('listado_autores')
     template_name = 'biblio_app/autor/crear_autor.html'
 
@@ -68,7 +74,7 @@ class DetalleAutor(DetailView):
 
 class DeshabilitarAutor(UpdateView):
     model = mod.Autor
-    form_class = forms.DeshabilitarAutorForm
+    form_class = fo.DeshabilitarAutorForm
     success_url = reverse_lazy('listado_autores')
     
 class EliminarAutor(DeleteView):

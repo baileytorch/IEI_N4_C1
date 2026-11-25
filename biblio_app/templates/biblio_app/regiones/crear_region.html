@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titulo %}
+<title>Agregar Región</title>
+{% endblock %}
+
+{% block script %}
+<!-- <script src="{% static 'js/biblio_app/regiones/regiones.js' %}"></script> -->
+{% endblock %}
+
+{% block contenido %}
+
+<h3>Agregar Región</h3>
+<br>
+<form action="" method="post">
+    {{ form.as_p }}
+    {% csrf_token %}
+
+    <button type="submit">Guardar</button>
+</form>
+
+
+{% endblock %}

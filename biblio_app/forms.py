@@ -1,6 +1,11 @@
 from django import forms
 from . import models as mod
 
+class FormularioRegion(forms.ModelForm):
+    class Meta:
+        model = mod.Region
+        fields = ['codigo','region']
+
 class AutorForm(forms.ModelForm):
     class Meta:
         model = mod.Autor

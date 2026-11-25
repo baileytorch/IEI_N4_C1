@@ -9,7 +9,7 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
 
 ## Creación de Proyectos con Django
 
-1.  **Creación de Ambiente Virtual**
+1.  ## Creación de Ambiente Virtual
     - Habiendo creado y clonado nuestro repositorio, abrimos la carpeta contenedora en VS Code.
     - Dentro de este directorio, crearemos un ambiente virtual que mantendrá aislada toda la configuración de nuestro proyecto y su entorno de trabajo.
     - Para lograrlo, iniciaremos un nuevo terminal, estando ubicados en el directorio principal.
@@ -25,7 +25,7 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
       - _Libs_: Directorio donde encontraremos las librerías asociadas a nuestro proyecto. Cuando está recién creado, sólo contendrá _PIP_.
       - _Scripts_: Directorio que contiene distintos scripts que serán usados durante el desarrollo, como Activate y deactivate.
 
-2.  **Activación de Ambiente Virtual**
+2.  ## Activación de Ambiente Virtual
     - Mediante el terminal accedemos al directorio creado anteriormente y a su subdirectorio Scripts, ejecutando el siguiente comando:
 
       ```
@@ -59,7 +59,7 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
 
     - El comando _cd.._ permite salir de un directorio y ubicarnos en el superior, por lo que deberíamos ejecutarlo 2 veces para llegar al directorio principal, saliendo de _mi_ambiente\Scripts_.
 
-3.  **Actualización de PIP**
+3.  ## Actualización de PIP
     - A pesar de haber generado una instalación del entorno desde cero, no está asegurado que contenga la última versión de PIP, por lo que debemos actualizarlo.
     - Para lograrlo, ejecutamos el siguiente comando en nuestro terminal:
 
@@ -67,7 +67,7 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
       python -m pip install --upgrade pip
       ```
 
-4.  **Instalación de Entorno Django**
+4.  ## Instalación de Entorno Django
     - Mediante terminal, estando ubicados en el directorio raíz de la aplicación, ejecutaremos el siguiente comando:
 
       ```
@@ -91,7 +91,7 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
       - _settings.py_, contiene configuraciones generales, como la conexión a la base de datos.
       - _urls.py_, contiene las rutas para redirigir las solicitudes _REQUEST_ que lleguen a la aplicación.
 
-5.  **Creación de la Aplicación**
+5.  ## Creación de la Aplicación
     - A continuación, para crear la aplicación que debemos construir, ejecutaremos el siguiente comando mediante terminal:
 
       ```
@@ -113,7 +113,7 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
 
     - Este comando inicia el servidor, el que se carga en la url http://127.0.0.1:8000.
 
-6.  **Plantillas Base**
+6.  ## Plantillas Base
     Las plantillas base permiten crear un esqueleto de diseño común para todas las páginas de una aplicación, evitando la repetición de código HTML y manteniendo la consistencia visual. Esto se logra creando un archivo HTML base que contiene bloques de contenido dinámico, y luego extendiendo esta plantilla en otras páginas para rellenar esos bloques con contenido específico de cada vista.
     - Dentro del directorio de nuestra aplicación, crearemos un nuevo directorio llamado _templates_, donde pondremos todas las vistas de nuestra aplicación.
     - Crear un archivo HTML de plantilla base en la carpeta _mi_aplicacion/templates_ recién creada, puede llamarse _base.html_.
@@ -148,9 +148,9 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
       {% endblock %}
       ```
 
-7.  **Modificando la página de inicio**
+7.  ## Modificando la página de inicio
     - Por defecto cuando iniciamos el servidor, carga una página con información de Django, pero no es lo que debiéramos ver cuando cargamos una aplicación, por lo que cambiaremos la página de inicio.
-    - Primero debemos indicarle a Django que el directorio de nuestra aplicación contiene una APP, agregamos nuestra APP a la lista *INSTALLED_APPS* de *motor_django/settings.py*:
+    - Primero debemos indicarle a Django que el directorio de nuestra aplicación contiene una APP, agregamos nuestra APP a la lista _INSTALLED_APPS_ de _motor_django/settings.py_:
 
       ```
       INSTALLED_APPS = [
@@ -189,7 +189,7 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
 
     - Cuando iniciemos nuevamente nuestro servidor, debiera cargar la vista recién creada en lugar de la vista Django por defecto.
 
-8.  **Página de Error 404 Genérica**
+8.  ## Página de Error 404 Genérica
     - Si python NO encuentra un recurso (página) solicitado, arrojará una página de error con información del servidor, lo que involucra un serio problema de seguridad. Para evitarlo, debemos cargar un página genérica de error, lo que lograremos de la siguiente forma:
       - Deshabilitamos el modo de pruebas de nuestra aplicación en _motor_django/settings.py_:
 
@@ -212,7 +212,7 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
 
       - Para que se muestre una página de error creada por nosotros, dentro del directorio _templates_ creado anteriormente, crearemos un archivo _html_ de nombre _404_. Django buscará en este directorio ese archivo y lo cargará al no encontrar un recurso.
 
-9.  **Manejo de Archivos Estáticos**
+9.  ## Manejo de Archivos Estáticos
     Para cargar y usar tus propios archivos estáticos (CSS, JavaScript, imágenes) en Django, sigue estos pasos básicos.
     - Asegúrate de que en tu archivo _motor_django/settings.py_ esté configurado el STATIC_URL y la ruta donde Django buscará los archivos:
 
@@ -245,29 +245,36 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
 
         <!DOCTYPE html>
         <html lang="es">
-
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <head>
+            <meta charset="UTF-8" />
+            <meta
+              name="viewport"
+              content="width=device-width, initial-scale=1.0"
+            />
 
             {% block titulo %}
             <title>Plantilla</title>
             {% endblock %}
 
-            <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
-            <link rel="stylesheet" href="{% static 'css/datatables.css' %}">
+            <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" />
+            <link rel="stylesheet" href="{% static 'css/datatables.css' %}" />
 
-            <link rel="shortcut icon" href="{% static 'images/logo.png' %}" type="image/x-icon">
+            <link
+              rel="shortcut icon"
+              href="{% static 'images/logo.png' %}"
+              type="image/x-icon"
+            />
             {% block estilos %}{% endblock %}
 
             <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
             <script src="{% static 'js/jquery_v4.0.0.js' %}"></script>
             <script src="{% static 'js/datatables.js' %}"></script>
             {% block script %}{% endblock %}
-        </head>
+          </head>
+        </html>
         ```
 
-10. **Manejo de Base de Datos**
+10. ## Manejo de Base de Datos
     Una base de datos en entornos profesionales debe controlarse con usuarios específicos con permisos otorgados explícitamente. Esto lo lograremos ejecutando sentencias SQL directamente en el motor de DB, de la siguiente forma:
     - Crear usuario remoto 'Usuario' con contraseña 'mi_contraseña'
 
@@ -315,7 +322,7 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
       }
       ```
 
-11. **Modelo de Datos**
+11. ## Modelo de Datos
     - Django controlará la base de datos mediante migraciones, scripts de bases de datos que modificarán la estructura de datos.
     - Django maneja varias tablas de manera predeterminada para información interna, para que se creen en la DB, debemos ejecutar el comando:
 
@@ -397,7 +404,7 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
 
     > Cada vez que modifiquemos el modelo de datos, crearemos una nueva migración y la aplicaremos a la base de datos para que se actualice de acuerdo a nuestro modelo.
 
-12. **Datos Iniciales de la Aplicación**
+12. ## Datos Iniciales de la Aplicación
     Al estar definida nuestra base de datos y aplicadas las migraciones de nuestro modelo de datos, tenemos la estructura de datos requerida para alojar nuestros registros.
     En este punto será importante contar con datos genéricos iniciales de la aplicación, como listas o parámetros que deben estar pre-cargados.
     Esto lo lograremos de la siguiente forma:
@@ -428,7 +435,7 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
 
     Donde _"pk"_ es el campo _id_ generado de manera automática por Django y _fields_ serán los atributos de nuestro modelo.
 
-13. **Desacoplar Datos Sensibles**
+13. ## Desacoplar Datos Sensibles
     Ahora que ya estamos trabajando con una DB externa, debemos usar credenciales para conectarnos a esta nueva DB. Cualquier credencial o dato sensible no debería existir en código, incluyendo la _'SECRET_KEY'_ de Django, por lo que debemos _DESACOPLAR_ esos datos y ponerlos en un archivo de ambiente.
     - Instalamos la librería _decouple_ para desacoplar los datos y posteriormente leerlos desde un archivo de ambiente. El siguiente comando será necesario para instalar la librería:
 
@@ -455,7 +462,7 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
     El método _config_ traerá el valor de la variable almacenada en el archivo de ambiente que tenga el nombre que le pasamos al método como argumento.
     El mismo procedimiento debemos usar para procesar la información de la base de datos.
 
-14. **Instalación Django Rest Framework**
+14. ## Instalación Django Rest Framework
     Django Rest Framework es una librería que contiene muchas herramientas que usaremos en nuestro desarrollo django, como los serializadores.
     Para instalarlo ejecutaremos el siguiente comando mediante terminal:
 
@@ -469,7 +476,7 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
             ...
         ]
 
-15. **Incorporar Modelo de Datos al administrador de Django**
+15. ## Incorporar Modelo de Datos al administrador de Django
     En el archivo _mi_aplicacion/admin.py_ debemos _REGISTRAR_ nuestro modelo de datos, para que el admin de django pueda procesar los datos.
     Esto lo lograremos de la siguiente forma:
     _admin.py_
@@ -484,7 +491,7 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
 
     Cuando ingresemos a la aplicación, en la sección _admin_ podremos hacer _CRUD_ de cada objeto de nuestro modelo de datos que haya sido registrado.
 
-16. **Creación de Serializadores**
+16. ## Creación de Serializadores
     La librería _rest_framework_ que instalamos anteriormente, tiene la herramienta para serializar nuestro modelo de datos en formato _JSON_, que será necesario para trabajar los datos en la aplicación web, lo que lograremos siguiendo estos pasos:
     - Primero crearemos un archivo _serializer.py_ en el directorio de nuestra aplicación.
     - En el archivo creado, importaremos _serializers_ para usarlos en la serialización de nuestro modelo.
@@ -522,11 +529,11 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
     from rest_framework import viewsets
     from . import models
     from . import serializer
-    
+
     class MiClaseViewSet(viewsets.ModelViewSet):
         queryset = models.MiClase.objects.all()
         serializer_class = serializer.MiClaseSerializer
-        
+
     class MiClase2ViewSet(viewsets.ModelViewSet):
         queryset = models.MiClase2.objects.all()
         serializer_class = serializer.MiClase2Serializer
@@ -575,44 +582,240 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
 
 20. **CRUD Manual**
 
+    En los pasos anteriores usamos _ViewSet_ de Django REST Framework para exponer un CRUD mediante una API. Esta herramienta que Django disponibiliza no es la que debe usar un usuario de aplicación, porque puede que no tenga los conocimientos técnicos necesarios y evita validaciones que no estén incluidas en el modelo de datos, por lo que se hace necesario generar una aplicación completamente funcional para hacer toda la gestión de nuestros datos.
+    En este apartado construiremos las vistas tradicionales de Django para listar, crear, editar y consultar registros desde plantillas HTML. También agregaremos la opción de habilitar o deshabilitar un registro sin eliminarlo de la base de datos, lo que conocemos como eliminado lógico.
+
+    ### Crear los formularios
+
+    Crea el archivo _mi_aplicacion/forms.py_. Usaremos un _ModelForm_ para que Django genere el formulario de creación y edición a partir de los campos del modelo. En el siguiente ejercicio deberás reemplazar los campos del ejemplo por los que existan en tu modelo. Una consideración especial tendremos con el campo _habilitado_, el que se gestiona por separado para evitar que se cambie desde el formulario de edición:
+
+    ```
+    from django import forms
+    from .models import MiModelo
+
+    class MiModeloForm(forms.ModelForm):
+      class Meta:
+        model = MiModelo
+        fields = ['nombre', 'descripcion']
+        widgets = {
+          'nombre': forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Nombre del registro...'
+          }),
+          'descripcion': forms.Textarea(attrs={
+            'class': 'form-control',
+              'rows': 4
+            })
+          }
+
+        class CambiarEstadoForm(forms.ModelForm):
+          class Meta:
+            model = MiModelo
+            fields = ['habilitado']
+    ```
+
+    Los _widgets_ permiten definir cómo se representa cada campo en HTML y agregar clases CSS, por ejemplo, las clases de Bootstrap.
+    El campo _habilitado_ será usado por un método que crearemos más adelante, _CambiarEstadoForm_, para deshabilitar o habilitar el objeto en cuestión.
+
+    ### Crear las vistas
+
+    En _mi_aplicacion/views.py_ importa las vistas genéricas, los formularios y el modelo. Luego, crea las vistas en el siguiente orden:
+    1.  **ListView**
+
+        _ListView_ obtiene los registros del modelo indicado en _model_ y los entrega a una plantilla indicada mediante _template_name_. Por defecto, la lista de los objetos obtenidos desde la base de datos queda disponible en el elemento _object_list_, que queda dentro de la plantilla:
+
+            from django.views.generic import ListView
+            from .models import MiModelo
+
+            class RegistroListView(ListView):
+                model = MiModelo
+                template_name = 'mi_aplicacion/registros/lista_registros.html'
+
+    2.  **CreateView**
+
+        _CreateView_ muestra y procesa el formulario de creación, _form_class_, en la vista _template_name_, de acuerdo al modelo indicado en _model_. Al guardarlo correctamente, redirige a la URL incluida en _success_url_:
+
+             from django.urls import reverse_lazy
+             from django.views.generic import CreateView
+             from .forms import MiModeloForm
+
+             class RegistroCreateView(CreateView):
+                 model = MiModelo
+                 form_class = MiModeloForm
+                 template_name = 'mi_aplicacion/registros/crear_registro.html'
+                 success_url = reverse_lazy('listado_registros')
+
+    3.  **UpdateView**
+
+        _UpdateView_ localiza el registro mediante el parámetro _pk_ de la ruta, carga sus valores actuales en el formulario y guarda los cambios.
+        Puede incluso usar el mismo form incluído en la vista de creación.
+        Para redirigir a una URL específica, debemos incluirla dentro del método _reverse_lazy_, porque el código de la clase se carga antes que el mapa de URL's. Con esta instrucción hacemos que el objeto espere hasta que sea actualizado y ya esté cargado el mapa de URL's:
+
+            from django.views.generic import UpdateView
+
+            class RegistroUpdateView(UpdateView):
+                model = MiModelo
+                form_class = MiModeloForm
+                template_name = 'mi_aplicacion/registros/editar_registro.html'
+                success_url = reverse_lazy('listado_registros')
+
+    4.  **Método para deshabilitar o habilitar**
+
+        Antes de crear esta vista, agrega a la clase de tu modelo en _mi_aplicacion/models.py_ un campo booleano. Así el registro se podrá deshabilitar sin eliminarlo de la base de datos:
+
+            habilitado = models.BooleanField(default=True)
+
+        Si el modelo ya tiene migraciones aplicadas, crea y aplica una migración desde el terminal con el ambiente virtual activado:
+
+            .\mi_ambiente\Scripts\Activate
+            python manage.py makemigrations
+            python manage.py migrate
+
+        Asegúrate de que _CambiarEstadoForm_ en _mi_aplicacion/forms.py_ incluya el campo _habilitado_. Luego crea la vista con _UpdateView_; el método _form_valid_ guarda el cambio y redirige al listado:
+
+            from django.shortcuts import redirect
+            from django.views.generic import UpdateView
+            from .forms import CambiarEstadoForm
+
+            class CambiarEstadoView(UpdateView):
+                model = MiModelo
+                form_class = CambiarEstadoForm
+
+                def form_valid(self, form):
+                    self.object = form.save()
+                    return redirect('listado_registros')
+
+        La vista también permite habilitar nuevamente un registro enviando _habilitado=True_.
+
+    5.  **DetailView (opcional)**
+
+        Para consultar los datos de un registro individual, agrega _DetailView_. También busca el objeto mediante el parámetro _pk_:
+
+            from django.views.generic import DetailView
+
+            class RegistroDetailView(DetailView):
+                model = MiModelo
+                template_name = 'mi_aplicacion/registros/detalle_registro.html'
+
+        El objeto queda disponible en la plantilla como un objeto al que podemos acceder de la manera habitual en Django y mostrarlo de la forma que mas nos convenga, por ejemplo dentro de un elemento _CARD_ de Bootstrap.
+
+        ```
+        <div class="card border-dark mb-3">
+            <div class="card-header">{{ mimodelo.nombre }}</div>
+            <div class="card-body">
+                <h4 class="card-title">{{ mimodelo.id }}</h4>
+                <p class="card-text">{% if mimodelo.descripcion is not None %}{{ mimodelo.sinopsis }}{% else %}--{% endif %}</p>
+
+                <div class="col">
+                    <a href="{% url 'actualizar_mimodelo' mimodelo.id %}" class="btn btn-success" title="Editar {{mimodelo.nombre}}"><i class="bi bi-pencil-fill"></i></a>
+                </div>
+            </div>
+        </div>
+        ```
+
+    ### Crear las rutas
+
+    En _mi_aplicacion/urls.py_ agrega una ruta para cada vista. Las rutas de edición, detalle y cambio de estado reciben el identificador del registro:
+
+        from django.urls import path
+        from . import views
+
+        urlpatterns = [
+            path('mimodelo/', views.MiModeloListView.as_view(), name='listado_mimodelo'),
+            path('mimodelo/crear/', views.MiModeloCreateView.as_view(), name='crear_mimodelo'),
+            path('mimodelo/<int:pk>/editar/', views.MiModeloUpdateView.as_view(), name='editar_mimodelo'),
+            path('mimodelo/<int:pk>/detalle/', views.MiModeloDetailView.as_view(), name='detalle_registro'),
+            path('mimodelo/<int:pk>/cambiar_estado/', views.CambiarEstadoView.as_view(), name='cambiar_estado'),
+        ]
+
+    Verifica que _mi_aplicacion/urls.py_ esté incluido en _motor_django/urls.py_, tal como se explicó en [Incorporación de rutas a Django](#).
+
+    ### Crear las plantillas
+
+    Crea el directorio _mi_aplicacion/templates/mi_aplicacion/registros/_ y dentro de él las plantillas indicadas en _template_name_. En la plantilla _lista_registros.html_, _ListView_ entrega los elementos mediante _object_list_:
+
+        <h3>Listado de registros</h3>
+        <a href="{% url 'crear_registro' %}">Agregar registro</a>
+
+        <table>
+            <thead>
+                <tr><th>Nombre</th><th>Estado</th><th>Acciones</th></tr>
+            </thead>
+            <tbody>
+                {% for registro in object_list %}
+                <tr>
+                    <td>{{ registro.nombre }}</td>
+                    <td>{% if registro.habilitado %}Habilitado{% else %}Deshabilitado{% endif %}</td>
+                    <td>
+                        <a href="{% url 'editar_registro' registro.pk %}">Editar</a>
+                        <a href="{% url 'detalle_registro' registro.pk %}">Ver detalle</a>
+                        {% if registro.habilitado %}
+                        <button type="button" class="cambiar-estado"
+                            data-url="{% url 'cambiar_estado' registro.pk %}"
+                            data-current="true">Deshabilitar</button>
+                        {% else %}
+                        <button type="button" class="cambiar-estado"
+                            data-url="{% url 'cambiar_estado' registro.pk %}"
+                            data-current="false">Habilitar</button>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% empty %}
+                <tr><td colspan="3">No se encontraron registros.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% csrf_token %}
+
+        <script>
+            document.addEventListener('click', function (event) {
+                const button = event.target.closest('.cambiar-estado');
+                if (!button) return;
+
+                const nextState = button.dataset.current !== 'true';
+                const formData = new FormData();
+                formData.append('habilitado', nextState);
+
+                const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+                fetch(button.dataset.url, {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': csrfToken,
+                        'X-Requested-With': 'XMLHttpRequest'
+                    },
+                    body: formData
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            window.location.reload();
+                        } else {
+                            alert('No fue posible cambiar el estado del registro.');
+                        }
+                    })
+                    .catch(error => console.error('Error al cambiar el estado:', error));
+            });
+        </script>
+
+    El botón envía el estado contrario al actual mediante _fetch_ y una solicitud _POST_. _{% csrf_token %}_ genera el token que Django valida en el encabezado _X-CSRFToken_. Al guardar, _CambiarEstadoView_ actualiza el campo _habilitado_ y la página se recarga para mostrar el nuevo estado. Así, el registro permanece en la base de datos y puede habilitarse nuevamente.
+
+    Para las plantillas _crear_registro.html_ y _editar_registro.html_, puedes reutilizar un formulario HTML como el siguiente. Django muestra los campos del _ModelForm_; en la edición, _UpdateView_ los completa con los valores actuales:
+
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Guardar</button>
+        </form>
+
+    En _detalle_registro.html_ puedes mostrar los datos recibidos en la variable _registro_, definida en _context_object_name_ de _RegistroDetailView_:
+
+        <h3>{{ registro.nombre }}</h3>
+        <p>{{ registro.descripcion }}</p>
+        <p>{% if registro.habilitado %}Habilitado{% else %}Deshabilitado{% endif %}</p>
+
+    Puedes reemplazar el HTML sencillo de estos ejemplos por tus componentes y estilos, manteniendo las rutas, los nombres de los formularios y los campos correspondientes a tu modelo.
+
 21. **Inicio de Sesión con Django**
     El sistema de autenticación incluido con Django se centra en el modelo User, lo que permite manejar cuentas de usuario, permisos, y tareas esenciales como login, logout, y control de contraseñas.
-
-    ### Extensión de User
-
-    Podemos crear nuestro propio modelo de usuario, pero si usamos el nativo podemos mantener todo el sistema de autenticación (como el inicio de sesión con login(), contraseñas, permisos) y, al mismo tiempo, agregar nuestros propios campos personalizados. La mejor práctica para lograrlo es extender el modelo de usuario utilizando AbstractUser, de la siguiente forma:
-    - Debemos definir el modelo personalizado en el archivo _mi_aplicacion/models.py_, y heredar de AbstractUser:
-
-      ```
-      from django.contrib.auth.models import AbstractUser
-      from django.db import models
-
-      class MiUsuario(AbstractUser):
-          # Agrega tus propios campos aquí
-          telefono = models.CharField(max_length=20, blank=True, null=True)
-          fecha_nacimiento = models.DateField(blank=True, null=True)
-          biografia = models.TextField(blank=True)
-
-          def __str__(self):
-              return self.username
-      ```
-
-    - Debes indicarle a Django que use tu nuevo modelo en lugar del modelo por defecto. Añade la siguiente línea en tu archivo _motor_django/settings.py_:
-
-      ```
-      AUTH_USER_MODEL = 'mi_aplicacion.MiUsuario'
-      ```
-
-    - Para que puedas gestionar tus usuarios personalizados y ver tus nuevos campos desde el panel de administración de Django, usa _UserAdmin_ para registrar tu modelo en _mi_aplicacion/admin.py_:
-
-      ```
-      from django.contrib import admin
-      from django.contrib.auth.admin import UserAdmin
-      from .models import MiUsuario
-
-      # Esto asegura que los campos heredados y los nuevos se muestren correctamente
-      admin.site.register(MiUsuario, UserAdmin)
-      ```
 
     Django provee vistas de autenticación y herramientas para todo lo relacionado.
     - Django proporciona URLs de autenticación listas para usar. Añádelas en el archivo urls.py de tu proyecto Django:
@@ -664,7 +867,7 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
       {% endblock %}
       ```
 
-    - Añade la siguiente configuración en tu archivo *settings.py* para redirigir a los usuarios a la página de inicio después de iniciar sesión:
+    - Añade la siguiente configuración en tu archivo _settings.py_ para redirigir a los usuarios a la página de inicio después de iniciar sesión:
 
       ```
       LOGIN_REDIRECT_URL = '/'
@@ -798,21 +1001,59 @@ Como buenos desarrolladores, ya debemos tener creado un repositorio para trabaja
           return redirect('login')
       ```
 
+    ### Extensión de User
+
+    Podemos crear nuestro propio modelo de usuario, pero si usamos el nativo podemos mantener todo el sistema de autenticación (como el inicio de sesión con login(), contraseñas, permisos) y, al mismo tiempo, agregar nuestros propios campos personalizados. La mejor práctica para lograrlo es extender el modelo de usuario utilizando AbstractUser, de la siguiente forma:
+    - Debemos definir el modelo personalizado en el archivo _mi_aplicacion/models.py_, y heredar de AbstractUser:
+
+      ```
+      from django.contrib.auth.models import AbstractUser
+      from django.db import models
+
+      class MiUsuario(AbstractUser):
+          # Agrega tus propios campos aquí
+          telefono = models.CharField(max_length=20, blank=True, null=True)
+          fecha_nacimiento = models.DateField(blank=True, null=True)
+          biografia = models.TextField(blank=True)
+
+          def __str__(self):
+              return self.username
+      ```
+
+    - Debes indicarle a Django que use tu nuevo modelo en lugar del modelo por defecto. Añade la siguiente línea en tu archivo _motor_django/settings.py_:
+
+      ```
+      AUTH_USER_MODEL = 'mi_aplicacion.MiUsuario'
+      ```
+
+    - Para que puedas gestionar tus usuarios personalizados y ver tus nuevos campos desde el panel de administración de Django, usa _UserAdmin_ para registrar tu modelo en _mi_aplicacion/admin.py_:
+
+      ```
+      from django.contrib import admin
+      from django.contrib.auth.admin import UserAdmin
+      from .models import MiUsuario
+
+      # Esto asegura que los campos heredados y los nuevos se muestren correctamente
+      admin.site.register(MiUsuario, UserAdmin)
+      ```
+
 ---
 
-**Crear un Usuario Admin de Django**
+## Crear un Usuario Admin de Django
+
 El usuario _ADMIN_ de Django es el que tendrá control administrativo de la aplicación y también podrá hacer _CRUD_ de nuestro modelo de datos.
 Para crearlo, ejecutaremos el siguiente comando mediante nuestro terminal:
 
-        ```
-        python manage.py createsuperuser
-        ```
+```
+python manage.py createsuperuser
+```
 
-    Una vez que jecutamos el comando, este nos pedirá la información del usuario mediante el mismo terminal.
+Una vez que jecutamos el comando, este nos pedirá la información del usuario mediante el mismo terminal.
 
 ---
 
-**Control de Dependecias**
+## Control de Dependecias
+
 Para poder mantener las librerias actualizadas y estandarizadas para todo el equipo de desarrollo, crearemos un archivo de requerimientos con el siguiente comando:
 
     ```
@@ -829,7 +1070,8 @@ Este archivo tendrá una lista de todas las librerías incluídas en nuestro _VE
 
 ---
 
-**Control de Fechas Global**
+## Control de Fechas Global
+
 Si se necesita aplicar el mismo formato de fecha en toda la aplicación, debemos agregar un configuración global en _settings.py_ como un diccionario llamado _REST_FRAMEWORK_.
 
     ```
@@ -846,3 +1088,5 @@ Si se necesita aplicar el mismo formato de fecha en toda la aplicación, debemos
         'DATE_INPUT_FORMATS': ['%d-%m-%Y'],
     }
     ```
+
+---
